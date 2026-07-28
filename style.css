@@ -1,5 +1,5 @@
 /* ==========================================================================
-   AMLAACH Personal Portfolio Design Tokens & Modern Stylesheet (Phase 2)
+   AMLAACH Personal Portfolio Design Tokens & Modern Stylesheet (Advanced)
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -83,12 +83,23 @@
 }
 
 /* --------------------------------------------------------------------------
-   2. Global Reset, Accessibility & Base Styles
+   2. Global Reset & Interactive Canvas Background
    -------------------------------------------------------------------------- */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+#particles-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.6;
 }
 
 html {
@@ -167,7 +178,7 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   3. Header & Glass Navigation
+   3. Header & Navigation
    -------------------------------------------------------------------------- */
 .site-header {
   position: fixed;
@@ -353,7 +364,7 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   4. Hero Section & Micro-Animations
+   4. Hero Section
    -------------------------------------------------------------------------- */
 .hero-section {
   padding-top: calc(var(--header-height) + 4rem);
@@ -555,7 +566,7 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   6. About Section Glassmorphism
+   6. About Section
    -------------------------------------------------------------------------- */
 .about-grid {
   display: grid;
@@ -576,7 +587,7 @@ button {
   padding: 2rem;
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
-  transition: border-color var(--transition-normal), transform var(--transition-normal);
+  transition: border-color var(--transition-normal);
 }
 
 .about-card:hover {
@@ -640,7 +651,93 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   7. Projects Section Cards & Glass Hover
+   7. Timeline / Experience Section
+   -------------------------------------------------------------------------- */
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 20px;
+  width: 2px;
+  background: var(--border-color);
+}
+
+[dir="rtl"] .timeline::before {
+  left: auto;
+  right: 20px;
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 3.5rem;
+}
+
+[dir="rtl"] .timeline-item {
+  padding-left: 0;
+  padding-right: 3.5rem;
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 0;
+  left: 13px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  box-shadow: 0 0 12px var(--accent-glow);
+  border: 3px solid var(--bg-primary);
+}
+
+[dir="rtl"] .timeline-dot {
+  left: auto;
+  right: 13px;
+}
+
+.timeline-content {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  backdrop-filter: var(--glass-blur);
+  transition: border-color var(--transition-fast);
+}
+
+.timeline-content:hover {
+  border-color: var(--border-hover);
+}
+
+.timeline-date {
+  font-size: 0.85rem;
+  font-family: var(--font-code);
+  color: var(--accent-primary);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.timeline-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-desc {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+/* --------------------------------------------------------------------------
+   8. Dynamic Projects Section & GitHub API Cards
    -------------------------------------------------------------------------- */
 .projects-grid {
   display: grid;
@@ -682,13 +779,12 @@ button {
   color: var(--accent-primary);
 }
 
-.project-featured-tag {
-  font-size: 0.75rem;
-  padding: 0.2rem 0.6rem;
-  border-radius: var(--radius-pill);
-  background: var(--accent-glow);
-  border: 1px solid var(--border-color);
-  color: var(--accent-primary);
+.project-stats-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
 }
 
 .project-title {
@@ -739,8 +835,40 @@ button {
   gap: 0.7rem;
 }
 
+/* Skeleton Loading Shimmer */
+.skeleton-card {
+  min-height: 220px;
+}
+
+.skeleton-line {
+  background: linear-gradient(90deg, var(--bg-tertiary) 25%, var(--border-hover) 50%, var(--bg-tertiary) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s infinite;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.title-skel {
+  height: 28px;
+  width: 60%;
+}
+
+.text-skel {
+  height: 16px;
+  width: 100%;
+}
+
+.text-skel.short {
+  width: 80%;
+}
+
+@keyframes skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
 /* --------------------------------------------------------------------------
-   8. Skills Section
+   9. Skills Section
    -------------------------------------------------------------------------- */
 .skills-grid {
   display: grid;
@@ -801,33 +929,129 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   9. Contact Section
+   10. Contact Section & Form UI
    -------------------------------------------------------------------------- */
 .contact-card {
   background-color: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  padding: 4rem 2rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 3.5rem 2rem;
+  max-width: 650px;
+  margin-inline: auto;
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
 }
 
-.contact-card .section-header {
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
   margin-bottom: 2rem;
+  width: 100%;
+}
+
+.form-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-input {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-input:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.form-label {
+  position: absolute;
+  top: 1rem;
+  left: 1.25rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  pointer-events: none;
+  transition: all var(--transition-fast);
+}
+
+[dir="rtl"] .form-label {
+  left: auto;
+  right: 1.25rem;
+}
+
+.form-input:focus ~ .form-label,
+.form-input:not(:placeholder-shown) ~ .form-label {
+  top: -0.65rem;
+  left: 0.85rem;
+  font-size: 0.75rem;
+  background-color: var(--bg-secondary);
+  padding-inline: 0.4rem;
+  color: var(--accent-primary);
+  border-radius: 4px;
+}
+
+[dir="rtl"] .form-input:focus ~ .form-label,
+[dir="rtl"] .form-input:not(:placeholder-shown) ~ .form-label {
+  left: auto;
+  right: 0.85rem;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.form-feedback {
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.form-feedback.success {
+  color: var(--success-color);
+}
+
+.contact-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-block: 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.contact-divider::before,
+.contact-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.contact-divider span {
+  padding-inline: 1rem;
 }
 
 .contact-buttons {
   display: flex;
   justify-content: center;
-  gap: 1rem;
 }
 
 /* --------------------------------------------------------------------------
-   10. Footer
+   11. Footer
    -------------------------------------------------------------------------- */
 .site-footer {
   border-top: 1px solid var(--border-color);
