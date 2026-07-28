@@ -3,9 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="AMLAACH - Full-Stack Developer & Software Engineer Portfolio">
-  <title>AMLAACH | Full-Stack Developer</title>
   
+  <!-- Primary SEO Meta Tags -->
+  <title>AMLAACH | Full-Stack Software Engineer & Web Architect</title>
+  <meta name="title" content="AMLAACH | Full-Stack Software Engineer & Web Architect">
+  <meta name="description" content="Personal portfolio of AMLAACH - Full-Stack Developer specializing in high-performance web applications, clean architecture, and modern bilingual (Hebrew/English) digital systems.">
+  <meta name="keywords" content="AMLAACH, Full Stack Developer, Software Engineer, Web Developer, JavaScript, Node.js, HTML5, CSS3, RTL, Hebrew Developer, GitHub">
+  <meta name="author" content="AMLAACH">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0a0c10">
+  <link rel="canonical" href="https://amlaach.github.io/personal-site/">
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://amlaach.github.io/personal-site/">
+  <meta property="og:title" content="AMLAACH | Full-Stack Software Engineer">
+  <meta property="og:description" content="Full-Stack Developer crafting high-performance, elegant web applications and robust digital systems.">
+  <meta property="og:image" content="https://amlaach.github.io/personal-site/favicon.svg">
+
+  <!-- Twitter Meta Tags -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://amlaach.github.io/personal-site/">
+  <meta property="twitter:title" content="AMLAACH | Full-Stack Software Engineer">
+  <meta property="twitter:description" content="Full-Stack Developer crafting high-performance, elegant web applications and robust digital systems.">
+  <meta property="twitter:image" content="https://amlaach.github.io/personal-site/favicon.svg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" href="favicon.svg">
+
   <!-- Fonts: Inter for LTR, Heebo/Rubik for RTL -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,11 +40,14 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Skip Link for Accessibility -->
+  <a href="#main-content" class="skip-to-content sr-only-focusable" data-i18n="a11y.skip">Skip to main content</a>
+
   <!-- Header / Navigation -->
   <header class="site-header" id="header">
     <div class="container header-inner">
       <a href="#hero" class="brand-logo" aria-label="AMLAACH Home">
-        <span class="logo-accent">&lt;/&gt;</span>
+        <span class="logo-accent" aria-hidden="true">&lt;/&gt;</span>
         <span class="logo-text">AMLAACH</span>
       </a>
 
@@ -33,18 +62,18 @@
 
       <div class="header-actions">
         <!-- Language Switcher -->
-        <button id="lang-toggle" class="icon-btn lang-btn" aria-label="Switch Language">
+        <button id="lang-toggle" class="icon-btn lang-btn" aria-label="Switch Language / החלף שפה">
           <span id="lang-label" class="btn-label">עברית</span>
         </button>
 
         <!-- Theme Toggle -->
-        <button id="theme-toggle" class="icon-btn theme-btn" aria-label="Toggle Theme">
-          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <button id="theme-toggle" class="icon-btn theme-btn" aria-label="Toggle Dark / Light Theme">
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </button>
 
         <!-- Mobile Menu Toggle -->
-        <button id="mobile-toggle" class="icon-btn burger-btn" aria-label="Toggle Menu" aria-expanded="false">
+        <button id="mobile-toggle" class="icon-btn burger-btn" aria-label="Toggle Menu Navigation" aria-expanded="false" aria-controls="nav-menu">
           <span class="burger-line"></span>
           <span class="burger-line"></span>
           <span class="burger-line"></span>
@@ -53,33 +82,33 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <!-- Hero Section -->
-    <section class="hero-section" id="hero">
+    <section class="hero-section" id="hero" aria-label="Hero Section">
       <div class="container hero-inner">
-        <div class="hero-badge">
+        <div class="hero-badge data-reveal">
           <span class="status-dot"></span>
           <span data-i18n="hero.badge">Available for ambitious projects</span>
         </div>
         
-        <h1 class="hero-title">
+        <h1 class="hero-title data-reveal">
           <span data-i18n="hero.titlePrefix">Hi, I'm</span>
           <span class="gradient-text">AMLAACH</span>
         </h1>
         
-        <p class="hero-subtitle" data-i18n="hero.subtitle">
+        <p class="hero-subtitle data-reveal" data-i18n="hero.subtitle">
           Full-Stack Software Engineer crafting high-performance, elegant web applications and robust digital systems.
         </p>
 
-        <div class="hero-ctas">
+        <div class="hero-ctas data-reveal">
           <a href="https://github.com/AMLAACH" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-            <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
             <span data-i18n="hero.ctaGithub">GitHub Profile</span>
           </a>
           <a href="#contact" class="btn btn-secondary" data-i18n="hero.ctaContact">Get in Touch</a>
         </div>
 
-        <div class="hero-stats">
+        <div class="hero-stats data-reveal">
           <div class="stat-card">
             <span class="stat-value">100%</span>
             <span class="stat-label" data-i18n="stats.quality">Clean Architecture</span>
@@ -97,15 +126,15 @@
     </section>
 
     <!-- About Section -->
-    <section class="section about-section" id="about">
+    <section class="section about-section" id="about" aria-label="About Me Section">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header data-reveal">
           <h2 class="section-title" data-i18n="about.title">About Me</h2>
           <p class="section-subtitle" data-i18n="about.subtitle">Passionate engineer dedicated to crafting efficient software solutions</p>
         </div>
 
         <div class="about-grid">
-          <div class="about-card main-bio">
+          <div class="about-card main-bio data-reveal">
             <h3 data-i18n="about.bioTitle">Building with passion & precision</h3>
             <p data-i18n="about.bioText1">
               I am a software engineer focused on building scalable web systems, modern user interfaces, and clean backend architectures. I aim for minimal complexity and maximum performance.
@@ -115,7 +144,7 @@
             </p>
           </div>
 
-          <div class="about-card info-card">
+          <div class="about-card info-card data-reveal">
             <ul class="info-list">
               <li>
                 <strong data-i18n="about.labelName">Name:</strong>
@@ -140,16 +169,16 @@
     </section>
 
     <!-- Projects Section -->
-    <section class="section projects-section" id="projects">
+    <section class="section projects-section" id="projects" aria-label="Projects Section">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header data-reveal">
           <h2 class="section-title" data-i18n="projects.title">Featured Projects</h2>
           <p class="section-subtitle" data-i18n="projects.subtitle">Explore selected applications and software architectures</p>
         </div>
 
         <div class="projects-grid">
           <!-- Project 1 -->
-          <article class="project-card">
+          <article class="project-card data-reveal">
             <div class="project-content">
               <div class="project-header-meta">
                 <span class="project-type" data-i18n="projects.p1Type">Full Stack App</span>
@@ -174,7 +203,7 @@
           </article>
 
           <!-- Project 2 -->
-          <article class="project-card">
+          <article class="project-card data-reveal">
             <div class="project-content">
               <div class="project-header-meta">
                 <span class="project-type" data-i18n="projects.p2Type">Tool / System</span>
@@ -198,7 +227,7 @@
           </article>
 
           <!-- Project 3 -->
-          <article class="project-card">
+          <article class="project-card data-reveal">
             <div class="project-content">
               <div class="project-header-meta">
                 <span class="project-type" data-i18n="projects.p3Type">Frontend UI</span>
@@ -225,16 +254,16 @@
     </section>
 
     <!-- Skills Section -->
-    <section class="section skills-section" id="skills">
+    <section class="section skills-section" id="skills" aria-label="Skills Section">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header data-reveal">
           <h2 class="section-title" data-i18n="skills.title">Technical Skills</h2>
           <p class="section-subtitle" data-i18n="skills.subtitle">Technologies, frameworks, and methodologies I work with</p>
         </div>
 
         <div class="skills-grid">
-          <div class="skill-category-card">
-            <div class="category-icon">&lt;/&gt;</div>
+          <div class="skill-category-card data-reveal">
+            <div class="category-icon" aria-hidden="true">&lt;/&gt;</div>
             <h3 data-i18n="skills.catFrontend">Frontend Engineering</h3>
             <ul class="skill-list">
               <li><span>HTML5 & Semantic Markup</span><span class="skill-badge">Advanced</span></li>
@@ -245,8 +274,8 @@
             </ul>
           </div>
 
-          <div class="skill-category-card">
-            <div class="category-icon">&#9881;</div>
+          <div class="skill-category-card data-reveal">
+            <div class="category-icon" aria-hidden="true">&#9881;</div>
             <h3 data-i18n="skills.catBackend">Backend & Systems</h3>
             <ul class="skill-list">
               <li><span>Node.js Architecture</span><span class="skill-badge">Proficient</span></li>
@@ -256,8 +285,8 @@
             </ul>
           </div>
 
-          <div class="skill-category-card">
-            <div class="category-icon">&#9729;</div>
+          <div class="skill-category-card data-reveal">
+            <div class="category-icon" aria-hidden="true">&#9729;</div>
             <h3 data-i18n="skills.catTools">Tools & Best Practices</h3>
             <ul class="skill-list">
               <li><span>Git & Version Control</span><span class="skill-badge">Expert</span></li>
@@ -271,9 +300,9 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="section contact-section" id="contact">
+    <section class="section contact-section" id="contact" aria-label="Contact Section">
       <div class="container">
-        <div class="contact-card">
+        <div class="contact-card data-reveal">
           <div class="section-header">
             <h2 class="section-title" data-i18n="contact.title">Let's Build Something Together</h2>
             <p class="section-subtitle" data-i18n="contact.subtitle">Feel free to connect on GitHub or send a direct message</p>
@@ -281,7 +310,7 @@
 
           <div class="contact-buttons">
             <a href="https://github.com/AMLAACH" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large">
-              <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
               <span data-i18n="contact.githubBtn">Connect on GitHub</span>
             </a>
           </div>
@@ -294,7 +323,7 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <span class="logo-accent">&lt;/&gt;</span>
+        <span class="logo-accent" aria-hidden="true">&lt;/&gt;</span>
         <span>AMLAACH</span>
       </div>
       <p class="copyright">&copy; <span id="year"></span> AMLAACH. <span data-i18n="footer.rights">All rights reserved.</span></p>

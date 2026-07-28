@@ -1,6 +1,6 @@
 /**
- * AMLAACH Portfolio - Core Application Logic
- * Vanilla ES6 JavaScript handling Themes, Bilingual i18n (EN/HE with RTL), & Navigation.
+ * AMLAACH Portfolio - Core Application & Enhancement Logic (Phase 2)
+ * Vanilla ES6 JavaScript handling Themes, i18n, Scroll Animations, & ScrollSpy.
  */
 
 (function () {
@@ -10,6 +10,7 @@
   const translations = {
     en: {
       langLabel: 'עברית',
+      'a11y.skip': 'Skip to main content',
       'nav.about': 'About',
       'nav.projects': 'Projects',
       'nav.skills': 'Skills',
@@ -58,6 +59,7 @@
     },
     he: {
       langLabel: 'English',
+      'a11y.skip': 'דלג לתוכן המרכזי',
       'nav.about': 'אודות',
       'nav.projects': 'פרויקטים',
       'nav.skills': 'כישורים',
@@ -118,6 +120,8 @@
   const mobileToggleBtn = document.getElementById('mobile-toggle');
   const navMenu = document.getElementById('nav-menu');
   const yearEl = document.getElementById('year');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('section[id]');
 
   // Initialize Footer Year
   if (yearEl) {
@@ -156,7 +160,7 @@
   setLanguage(currentLang);
   setTheme(currentTheme);
 
-  // Attach Listeners
+  // Attach Toggle Listeners
   if (langToggleBtn) {
     langToggleBtn.addEventListener('click', () => {
       const nextLang = currentLang === 'en' ? 'he' : 'en';
@@ -177,12 +181,56 @@
       mobileToggleBtn.setAttribute('aria-expanded', isOpen);
     });
 
-    const navLinks = navMenu.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
+    const links = navMenu.querySelectorAll('.nav-link');
+    links.forEach(link => {
       link.addEventListener('click', () => {
         navMenu.classList.remove('open');
         mobileToggleBtn.setAttribute('aria-expanded', 'false');
       });
     });
   }
+
+  // Scroll Reveal Observer
+  const revealElements = document.querySelectorAll('.data-reveal');
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+  } else {
+    // Fallback if IntersectionObserver not supported
+    revealElements.forEach(el => el.classList.add('revealed'));
+  }
+
+  // ScrollSpy Active Link Highlighter
+  function highlightNavOnScroll() {
+    const scrollY = window.pageYOffset;
+
+    sections.forEach(current => {
+      const sectionHeight = current.offsetHeight;
+      const sectionTop = current.offsetTop - 120;
+      const sectionId = current.getAttribute('id');
+      const targetLink = document.querySelector(`.nav-list a[href*=${sectionId}]`);
+
+      if (targetLink) {
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+          targetLink.classList.add('active');
+        } else {
+          targetLink.classList.remove('active');
+        }
+      }
+    });
+  }
+
+  window.addEventListener('scroll', highlightNavOnScroll, { passive: true });
+
 })();
