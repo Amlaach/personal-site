@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AMLAACH - Full-Stack Developer & Software Engineer Portfolio">
+  <title>AMLAACH | Full-Stack Developer</title>
+  
+  <!-- Fonts: Inter for LTR, Heebo/Rubik for RTL -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a href="#hero" class="brand-logo" aria-label="AMLAACH Home">
+        <span class="logo-accent">&lt;/&gt;</span>
+        <span class="logo-text">AMLAACH</span>
+      </a>
+
+      <nav class="nav-menu" id="nav-menu" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li><a href="#about" class="nav-link" data-i18n="nav.about">About</a></li>
+          <li><a href="#projects" class="nav-link" data-i18n="nav.projects">Projects</a></li>
+          <li><a href="#skills" class="nav-link" data-i18n="nav.skills">Skills</a></li>
+          <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Language Switcher -->
+        <button id="lang-toggle" class="icon-btn lang-btn" aria-label="Switch Language">
+          <span id="lang-label" class="btn-label">עברית</span>
+        </button>
+
+        <!-- Theme Toggle -->
+        <button id="theme-toggle" class="icon-btn theme-btn" aria-label="Toggle Theme">
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-toggle" class="icon-btn burger-btn" aria-label="Toggle Menu" aria-expanded="false">
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-inner">
+        <div class="hero-badge">
+          <span class="status-dot"></span>
+          <span data-i18n="hero.badge">Available for ambitious projects</span>
+        </div>
+        
+        <h1 class="hero-title">
+          <span data-i18n="hero.titlePrefix">Hi, I'm</span>
+          <span class="gradient-text">AMLAACH</span>
+        </h1>
+        
+        <p class="hero-subtitle" data-i18n="hero.subtitle">
+          Full-Stack Software Engineer crafting high-performance, elegant web applications and robust digital systems.
+        </p>
+
+        <div class="hero-ctas">
+          <a href="https://github.com/AMLAACH" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span data-i18n="hero.ctaGithub">GitHub Profile</span>
+          </a>
+          <a href="#contact" class="btn btn-secondary" data-i18n="hero.ctaContact">Get in Touch</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-card">
+            <span class="stat-value">100%</span>
+            <span class="stat-label" data-i18n="stats.quality">Clean Architecture</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">Full-Stack</span>
+            <span class="stat-label" data-i18n="stats.role">Modern Web Tech</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">2 Languages</span>
+            <span class="stat-label" data-i18n="stats.lang">Hebrew & English</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="about.title">About Me</h2>
+          <p class="section-subtitle" data-i18n="about.subtitle">Passionate engineer dedicated to crafting efficient software solutions</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card main-bio">
+            <h3 data-i18n="about.bioTitle">Building with passion & precision</h3>
+            <p data-i18n="about.bioText1">
+              I am a software engineer focused on building scalable web systems, modern user interfaces, and clean backend architectures. I aim for minimal complexity and maximum performance.
+            </p>
+            <p data-i18n="about.bioText2">
+              Driven by modern web standards and high-quality design principles inspired by Vercel and Apple, I craft software that feels responsive, reliable, and effortless.
+            </p>
+          </div>
+
+          <div class="about-card info-card">
+            <ul class="info-list">
+              <li>
+                <strong data-i18n="about.labelName">Name:</strong>
+                <span>AMLAACH</span>
+              </li>
+              <li>
+                <strong data-i18n="about.labelRole">Role:</strong>
+                <span data-i18n="about.valueRole">Full-Stack Developer</span>
+              </li>
+              <li>
+                <strong data-i18n="about.labelGitHub">GitHub:</strong>
+                <a href="https://github.com/AMLAACH" target="_blank" rel="noopener noreferrer">@AMLAACH</a>
+              </li>
+              <li>
+                <strong data-i18n="about.labelLanguages">Languages:</strong>
+                <span>Hebrew (RTL), English (LTR)</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section projects-section" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="projects.title">Featured Projects</h2>
+          <p class="section-subtitle" data-i18n="projects.subtitle">Explore selected applications and software architectures</p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <article class="project-card">
+            <div class="project-content">
+              <div class="project-header-meta">
+                <span class="project-type" data-i18n="projects.p1Type">Full Stack App</span>
+                <span class="project-featured-tag" data-i18n="projects.featured">Featured</span>
+              </div>
+              <h3 class="project-title" data-i18n="projects.p1Title">Modern Developer Platform</h3>
+              <p class="project-description" data-i18n="projects.p1Desc">
+                A high-performance cloud management interface built with ultra-low latency client render and modular architecture.
+              </p>
+              <ul class="tech-tags">
+                <li>JavaScript</li>
+                <li>CSS Modules</li>
+                <li>REST API</li>
+                <li>Node.js</li>
+              </ul>
+              <div class="project-links">
+                <a href="https://github.com/AMLAACH" target="_blank" rel="noopener noreferrer" class="project-link">
+                  <span data-i18n="projects.viewRepo">View Repository</span> &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card">
+            <div class="project-content">
+              <div class="project-header-meta">
+                <span class="project-type" data-i18n="projects.p2Type">Tool / System</span>
+              </div>
+              <h3 class="project-title" data-i18n="projects.p2Title">Distributed Async Engine</h3>
+              <p class="project-description" data-i18n="projects.p2Desc">
+                A lightweight event-driven queue runner designed for concurrent background processing and strict telemetry monitoring.
+              </p>
+              <ul class="tech-tags">
+                <li>Node.js</li>
+                <li>WebSockets</li>
+                <li>Redis</li>
+                <li>Docker</li>
+              </ul>
+              <div class="project-links">
+                <a href="https://github.com/AMLAACH" target="_blank" rel="noopener noreferrer" class="project-link">
+                  <span data-i18n="projects.viewRepo">View Repository</span> &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card">
+            <div class="project-content">
+              <div class="project-header-meta">
+                <span class="project-type" data-i18n="projects.p3Type">Frontend UI</span>
+              </div>
+              <h3 class="project-title" data-i18n="projects.p3Title">Bilingual Design System</h3>
+              <p class="project-description" data-i18n="projects.p3Desc">
+                An accessible, RTL-first component library with dynamic theme tokens, smooth CSS transitions, and zero external dependencies.
+              </p>
+              <ul class="tech-tags">
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>ES6 JS</li>
+                <li>i18n RTL</li>
+              </ul>
+              <div class="project-links">
+                <a href="https://github.com/AMLAACH" target="_blank" rel="noopener noreferrer" class="project-link">
+                  <span data-i18n="projects.viewRepo">View Repository</span> &rarr;
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section skills-section" id="skills">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="skills.title">Technical Skills</h2>
+          <p class="section-subtitle" data-i18n="skills.subtitle">Technologies, frameworks, and methodologies I work with</p>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-category-card">
+            <div class="category-icon">&lt;/&gt;</div>
+            <h3 data-i18n="skills.catFrontend">Frontend Engineering</h3>
+            <ul class="skill-list">
+              <li><span>HTML5 & Semantic Markup</span><span class="skill-badge">Advanced</span></li>
+              <li><span>CSS3 / Flexbox / Grid</span><span class="skill-badge">Advanced</span></li>
+              <li><span>JavaScript (ES6+)</span><span class="skill-badge">Advanced</span></li>
+              <li><span>Responsive & Mobile-First</span><span class="skill-badge">Expert</span></li>
+              <li><span>RTL Layout Support</span><span class="skill-badge">Expert</span></li>
+            </ul>
+          </div>
+
+          <div class="skill-category-card">
+            <div class="category-icon">&#9881;</div>
+            <h3 data-i18n="skills.catBackend">Backend & Systems</h3>
+            <ul class="skill-list">
+              <li><span>Node.js Architecture</span><span class="skill-badge">Proficient</span></li>
+              <li><span>RESTful API Design</span><span class="skill-badge">Advanced</span></li>
+              <li><span>Database Schemas</span><span class="skill-badge">Proficient</span></li>
+              <li><span>Asynchronous Logic</span><span class="skill-badge">Advanced</span></li>
+            </ul>
+          </div>
+
+          <div class="skill-category-card">
+            <div class="category-icon">&#9729;</div>
+            <h3 data-i18n="skills.catTools">Tools & Best Practices</h3>
+            <ul class="skill-list">
+              <li><span>Git & Version Control</span><span class="skill-badge">Expert</span></li>
+              <li><span>GitHub Workflow</span><span class="skill-badge">Expert</span></li>
+              <li><span>Clean Code & Refactoring</span><span class="skill-badge">Advanced</span></li>
+              <li><span>Performance Optimization</span><span class="skill-badge">Advanced</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="contact-card">
+          <div class="section-header">
+            <h2 class="section-title" data-i18n="contact.title">Let's Build Something Together</h2>
+            <p class="section-subtitle" data-i18n="contact.subtitle">Feel free to connect on GitHub or send a direct message</p>
+          </div>
+
+          <div class="contact-buttons">
+            <a href="https://github.com/AMLAACH" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large">
+              <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span data-i18n="contact.githubBtn">Connect on GitHub</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-accent">&lt;/&gt;</span>
+        <span>AMLAACH</span>
+      </div>
+      <p class="copyright">&copy; <span id="year"></span> AMLAACH. <span data-i18n="footer.rights">All rights reserved.</span></p>
+      <a href="#hero" class="back-to-top" aria-label="Back to top" data-i18n="footer.top">&uarr; Top</a>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
