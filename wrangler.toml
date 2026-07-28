@@ -1,4 +1,0 @@
-# Cloudflare Pages Configuration (Wrangler v3+)
-name = "amlaach-site"
-pages_build_output_dir = "."
-compatibility_date = "2026-07-28"
