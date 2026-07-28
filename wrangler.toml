@@ -1,0 +1,14 @@
+# Cloudflare Pages / Workers Configuration (Wrangler)
+name = "amlaach-site"
+compatibility_date = "2026-07-28"
+pages_build_output_dir = "."
+
+[site]
+bucket = "."
+
+# Custom headers & edge configuration
+[build]
+command = ""
+
+[vars]
+ENVIRONMENT = "production"
