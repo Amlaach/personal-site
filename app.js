@@ -1,7 +1,7 @@
 /**
- * AMLAACH Portfolio - Advanced Application Logic
- * Vanilla ES6 JS: Theme & i18n Manager, GitHub API Auto-Loader with Caching, 
- * Interactive Particle Canvas, Experience Timeline, & Contact Form Handler.
+ * AMLAACH Portfolio - Core Application Logic
+ * Pure ES6 JS handling Themes, Bilingual i18n (Hebrew RTL / English LTR), 
+ * Interactive Particle Background Canvas, ScrollSpy Navigation, & Tooltip Accessibility.
  */
 
 (function () {
@@ -15,56 +15,69 @@
       langLabel: 'עברית',
       'a11y.skip': 'Skip to main content',
       'nav.about': 'About',
-      'nav.experience': 'Experience',
-      'nav.projects': 'Projects',
-      'nav.skills': 'Skills',
-      'nav.contact': 'Contact',
-      'hero.badge': 'Available for ambitious projects',
+      'nav.expertise': 'Specializations',
+      'nav.techstack': 'Tech Stack',
+      'nav.github': 'GitHub',
+      'hero.badge': 'Algorithms • Complex Systems • AI',
       'hero.titlePrefix': "Hi, I'm",
-      'hero.subtitle': 'Full-Stack Software Engineer crafting high-performance, elegant web applications and robust digital systems.',
+      'hero.subtitle': 'Israeli Haredi Software Engineer specializing in high-performance algorithms, complex systems, Artificial Intelligence (AI), Language Models (LM), cybersecurity, and reverse engineering.',
       'hero.ctaGithub': 'GitHub Profile',
-      'hero.ctaContact': 'Get in Touch',
-      'stats.repos': 'GitHub Repositories',
-      'stats.quality': 'Clean Architecture',
-      'stats.role': 'Modern Web Tech',
-      'stats.lang': 'Hebrew & English',
+      'hero.ctaExplore': 'Explore Expertise',
+      'stats.tech': 'Python • Rust • JS • HTML',
+      'stats.spec': 'AI • LM • Security • Reverse Eng',
+      'stats.eng': 'Algorithms & Complex Systems',
       'about.title': 'About Me',
-      'about.subtitle': 'Passionate engineer dedicated to crafting efficient software solutions',
-      'about.bioTitle': 'Building with passion & precision',
-      'about.bioText1': 'I am a software engineer focused on building scalable web systems, modern user interfaces, and clean backend architectures. I aim for minimal complexity and maximum performance.',
-      'about.bioText2': 'Driven by modern web standards and high-quality design principles inspired by Vercel and Apple, I craft software that feels responsive, reliable, and effortless.',
+      'about.subtitle': 'Engineering deep technical solutions with mathematical logic & precision',
+      'about.bioTitle': 'Israeli Haredi Software Engineer',
+      'about.bioText1': 'I am a software engineer focused on building high-scale complex systems, optimizing algorithmic efficiency, and researching Artificial Intelligence (AI) and Language Models (LM).',
+      'about.bioText2': 'Combining deep analytical discipline with low-level systems programming in Rust and Python, my work encompasses binary analysis, reverse engineering, cybersecurity research, and modern web architectures.',
       'about.labelName': 'Name:',
       'about.labelRole': 'Role:',
-      'about.valueRole': 'Full-Stack Developer',
+      'about.valueRole': 'Software Engineer (AI & Systems)',
+      'about.labelFocus': 'Core Focus:',
+      'about.valueFocus': 'Algorithms, AI/LM & Security',
       'about.labelGitHub': 'GitHub:',
-      'about.labelLanguages': 'Languages:',
-      'exp.title': 'Experience & Journey',
-      'exp.subtitle': 'Engineering milestones and technical focus',
-      'exp.role1': 'Full-Stack Architect',
-      'exp.desc1': 'Designing scalable web platforms, REST APIs, and micro-frontend architectures with emphasis on performance & clean code.',
-      'exp.role2': 'Frontend Engineer & UI Specialist',
-      'exp.desc2': 'Building accessible bilingual (RTL/LTR) web applications, dynamic design systems, and responsive interfaces.',
-      'exp.role3': 'Systems & Tools Developer',
-      'exp.desc3': 'Developing CLI utilities, backend queue runners, and automated developer tooling.',
-      'projects.title': 'Featured & Live Repositories',
-      'projects.subtitle': 'Auto-loaded live repositories directly from GitHub API',
-      'projects.viewRepo': 'View Repository',
-      'projects.stars': 'Stars',
-      'projects.forks': 'Forks',
-      'skills.title': 'Technical Skills',
-      'skills.subtitle': 'Technologies, frameworks, and methodologies I work with',
-      'skills.catFrontend': 'Frontend Engineering',
-      'skills.catBackend': 'Backend & Systems',
-      'skills.catTools': 'Tools & Best Practices',
-      'contact.title': "Let's Build Something Together",
-      'contact.subtitle': 'Feel free to connect on GitHub or send a direct message',
-      'contact.nameLabel': 'Your Name',
-      'contact.emailLabel': 'Your Email',
-      'contact.msgLabel': 'Your Message',
-      'contact.sendBtn': 'Send Message',
-      'contact.success': 'Thank you! Your message has been sent successfully.',
-      'contact.or': 'OR',
-      'contact.githubBtn': 'Connect on GitHub',
+      'exp.title': 'Specializations & Pillars',
+      'exp.subtitle': 'Engineering domains and core computational capabilities',
+      'exp.title1': 'Algorithms & Complex Systems',
+      'exp.desc1': 'Designing high-performance computational structures, graph algorithms, concurrency models, and memory-safe system architectures.',
+      'exp.title2': 'Artificial Intelligence & LM',
+      'exp.desc2': 'Developing AI pipelines, integrating Language Models (LM/LLMs), neural processing engines, and intelligent retrieval architectures (RAG).',
+      'exp.title3': 'Security & Reverse Engineering',
+      'exp.desc3': 'Deep binary analysis, decompilation, protocol reverse engineering, code audit, and cryptographic security assessment.',
+      'exp.title4': 'Systems & Web Engineering',
+      'exp.desc4': 'Building ultra-fast asynchronous engines, modern user interfaces, and clean modular web tools using JavaScript & HTML5.',
+      'tech.title': 'Technologies & Stack',
+      'tech.subtitle': 'Hover or tap on any badge to reveal interactive technical tooltips',
+      'tech.catPy': 'AI, Systems & Scripting',
+      'tech.catRs': 'Systems & Performance',
+      'tech.catJs': 'Web Logic & Engines',
+      'tech.catHtml': 'Semantic Structure',
+      'tech.secName': 'Cybersecurity',
+      'tech.catSec': 'Security & Auditing',
+      'tech.reName': 'Reverse Engineering',
+      'tech.catRe': 'Binary Analysis',
+      'tech.catAi': 'Machine Intelligence',
+      'tech.catLm': 'LLMs & Prompt Engineering',
+      'tooltip.pyTitle': 'Python Expertise:',
+      'tooltip.pyText': 'High-performance data pipelines, AI modeling, machine learning algorithms, automation & computational research.',
+      'tooltip.rsTitle': 'Rust Expertise:',
+      'tooltip.rsText': 'Memory-safe systems programming, high-concurrency algorithms, low-level binary tools & security engines.',
+      'tooltip.jsTitle': 'JavaScript Expertise:',
+      'tooltip.jsText': 'Modern ES6+ asynchronous logic, client-side rendering engines, dynamic UIs, and interactive web tools.',
+      'tooltip.htmlTitle': 'HTML5 Expertise:',
+      'tooltip.htmlText': 'Clean semantic markup, screen-reader accessibility (A11y), SEO optimization, and structured document trees.',
+      'tooltip.secTitle': 'Security Expertise:',
+      'tooltip.secText': 'Vulnerability research, threat modeling, code auditing, cryptographic verification, and secure architecture.',
+      'tooltip.reTitle': 'Reverse Engineering:',
+      'tooltip.reText': 'Binary decompilation, machine code disassembly, protocol reverse engineering, and low-level system inspection.',
+      'tooltip.aiTitle': 'AI Expertise:',
+      'tooltip.aiText': 'Machine learning algorithms, neural networks, intelligent data pipelines, and deep computational modeling.',
+      'tooltip.lmTitle': 'Language Models (LM):',
+      'tooltip.lmText': 'Large Language Model (LLM) integration, prompt engineering, RAG retrieval architectures, and fine-tuning.',
+      'github.cardTitle': 'Explore My GitHub Codebase',
+      'github.cardDesc': 'Explore open-source repositories, system tools, algorithmic scripts, and AI code projects directly on GitHub.',
+      'github.visitBtn': 'Visit @AMLAACH on GitHub',
       'footer.rights': 'All rights reserved.',
       'footer.top': '↑ Top'
     },
@@ -72,56 +85,69 @@
       langLabel: 'English',
       'a11y.skip': 'דלג לתוכן המרכזי',
       'nav.about': 'אודות',
-      'nav.experience': 'ניסיון',
-      'nav.projects': 'פרויקטים',
-      'nav.skills': 'כישורים',
-      'nav.contact': 'צור קשר',
-      'hero.badge': 'זמין לפרויקטים מאתגרים',
+      'nav.expertise': 'התמחויות',
+      'nav.techstack': 'טכנולוגיות',
+      'nav.github': 'GitHub',
+      'hero.badge': 'אלגוריתמים • מערכות מורכבות • AI',
       'hero.titlePrefix': 'שלום, אני',
-      'hero.subtitle': 'מהנדס תוכנה Full-Stack המפתח אפליקציות ווב מודרניות, מהירות ומערכות דיגיטליות מתקדמות.',
+      'hero.subtitle': 'מהנדס תוכנה חרדי מתמחה באלגוריתמים מתקדמים, מערכות מורכבות, בינה מלאכותית (AI), מודלי שפה (LM), אבטחת מידע והנדסה לאחור.',
       'hero.ctaGithub': 'פרופיל GitHub',
-      'hero.ctaContact': 'צור קשר',
-      'stats.repos': 'מאגרי GitHub',
-      'stats.quality': 'ארכיטקטורה נקייה',
-      'stats.role': 'טכנולוגיות ווב מודרניות',
-      'stats.lang': 'עברית ואנגלית',
+      'hero.ctaExplore': 'סקירת התמחויות',
+      'stats.tech': 'Python • Rust • JS • HTML',
+      'stats.spec': 'AI • LM • אבטחה • הנדסה לאחור',
+      'stats.eng': 'אלגוריתמים ומערכות מורכבות',
       'about.title': 'אודותיי',
-      'about.subtitle': 'מהנדס תוכנה בעל תשוקה לפיתוח פתרונות טכנולוגיים יעילים',
-      'about.bioTitle': 'בנייה מתוך תשוקה ודיוק',
-      'about.bioText1': 'אני מהנדס תוכנה המתמחה בבניית מערכות ווב בסקייל גבוה, ממשקי משתמש מודרניים וארכיטקטורת צד-שרת נקייה. השאיפה שלי היא מינימום סיבוכיות ומקסימום ביצועים.',
-      'about.bioText2': 'בהשראת תפיסות העיצוב המתקדמות של Vercel ו-Apple, אני מפתח תוכנה מהירה, אמינה ומהנה לשימוש.',
+      'about.subtitle': 'פיתוח פתרונות טכנולוגיים עמוקים מתוך לוגיקה מתמטית ודיוק',
+      'about.bioTitle': 'מהנדס תוכנה חרדי',
+      'about.bioText1': 'אני מהנדס תוכנה המתמחה בבניית מערכות מורכבות בסקייל גבוה, אופטימיזציה של אלגוריתמים, ומחקר מתקדם בתחומי הבינה המלאכותית (AI) ומודלי שפה (LM).',
+      'about.bioText2': 'בשילוב בין חשיבה אנליטית עמוקה לתכנות מערכות נמוך-דרג ב-Rust ו-Python, העבודה שלי כוללת ניתוח בינארי, הנדסה לאחור, מחקר אבטחת מידע וארכיטקטורת ווב מודרנית.',
       'about.labelName': 'שם:',
       'about.labelRole': 'תפקיד:',
-      'about.valueRole': 'מפתח Full-Stack',
+      'about.valueRole': 'מהנדס תוכנה (AI ומערכות)',
+      'about.labelFocus': 'התמחות מרכזית:',
+      'about.valueFocus': 'אלגוריתמים, AI/LM ואבטחה',
       'about.labelGitHub': 'גיטהאב:',
-      'about.labelLanguages': 'שפות:',
-      'exp.title': 'ניסיון ומסלול מקצועי',
-      'exp.subtitle': 'אבני דרך והתמחות טכנולוגית',
-      'exp.role1': 'ארכיטקט Full-Stack',
-      'exp.desc1': 'תכנון פלטפורמות ווב בסקייל גבוה, ממשקי REST API וארכיטקטורת Frontend המושמת דגש על ביצועים וקוד נקי.',
-      'exp.role2': 'מהנדס Frontend ומומחה UI',
-      'exp.desc2': 'בניית אפליקציות דו-לשוניות נגישות (RTL/LTR), מערכות עיצוב דינמיות וממשקים רספונסיביים.',
-      'exp.role3': 'מפתח מערכות וכלים',
-      'exp.desc3': 'פיתוח כלי CLI, מנועי תורי משימות בצד השרת ואוטומציה למפתחים.',
-      'projects.title': 'פרויקטים נבחרים ומאגרים חיים',
-      'projects.subtitle': 'טעינה אוטומטית של פרויקטים ישירות מ-GitHub API',
-      'projects.viewRepo': 'צפה בגרסה ב-GitHub',
-      'projects.stars': 'כוכבים',
-      'projects.forks': 'פיצולים',
-      'skills.title': 'כישורים טכניים',
-      'skills.subtitle': 'טכנולוגיות, ספריות מתודולוגיות בהן אני משתמש',
-      'skills.catFrontend': 'פיתוח Front-End',
-      'skills.catBackend': 'פיתוח Back-End ומערכות',
-      'skills.catTools': 'כלים ומתודולוגיות',
-      'contact.title': 'בואו נבנה משהו ביחד',
-      'contact.subtitle': 'מוזמנים ליצור קשר ב-GitHub או לשלוח הודעה ישירה',
-      'contact.nameLabel': 'השם שלך',
-      'contact.emailLabel': 'אימייל לחזרה',
-      'contact.msgLabel': 'הודעה',
-      'contact.sendBtn': 'שלח הודעה',
-      'contact.success': 'תודה! ההודעה נשלחה בהצלחה.',
-      'contact.or': 'או',
-      'contact.githubBtn': 'התחבר ב-GitHub',
+      'exp.title': 'תחומי התמחות וליבה',
+      'exp.subtitle': 'תחומי הנדסה ויכולות חישוביות מרכזיות',
+      'exp.title1': 'אלגוריתמים ומערכות מורכבות',
+      'exp.desc1': 'תכנון מבני נתונים מתקדמים, אלגוריתמי גרפים, מודלי מקביליות וארכיטקטורות מערכת בטוחות לזיכרון.',
+      'exp.title2': 'בינה מלאכותית ומודלי שפה (LM)',
+      'exp.desc2': 'פיתוח צינורות עיבוד AI, אינטגרציית מודלי שפה (LM/LLMs), מנועי עיבוד נוירוניים וארכיטקטורות שליפת מידע (RAG).',
+      'exp.title3': 'אבטחת מידע והנדסה לאחור',
+      'exp.desc3': 'ניתוח קוד בינארי, דקומפילציה, הנדסה לאחור של פרוטוקולים, סקירת אבטחת קוד והערכת סיכונים קריפטוגרפית.',
+      'exp.title4': 'הנדסת מערכות וווב',
+      'exp.desc4': 'בניית מנועים אסינכרוניים מהירים, ממשקי משתמש מודרניים וכלים מודולריים ב-JavaScript ו-HTML5.',
+      'tech.title': 'טכנולוגיות וכישורים',
+      'tech.subtitle': 'רחף או לחץ על כל באדג\' לצפייה בטולטיפ טכני מפורט',
+      'tech.catPy': 'AI, מערכות וסคריפטינג',
+      'tech.catRs': 'מערכות וביצועים גבוהים',
+      'tech.catJs': 'לוגיקת ווב ומנועים',
+      'tech.catHtml': 'מבנה סמנטי ונגישות',
+      'tech.secName': 'אבטחת מידע',
+      'tech.catSec': 'מחקר אבטחה וביקורת',
+      'tech.reName': 'הנדסה לאחור',
+      'tech.catRe': 'ניתוח קוד בינארי',
+      'tech.catAi': 'בינה מלאכותית',
+      'tech.catLm': 'מודלי שפה ו-LLMs',
+      'tooltip.pyTitle': 'מומחיות ב-Python:',
+      'tooltip.pyText': 'צינורות עיבוד נתונים מהירים, מידול AI, אלגוריתמי למידת מכונה, אוטומציה ומחקר חישובי.',
+      'tooltip.rsTitle': 'מומחיות ב-Rust:',
+      'tooltip.rsText': 'תכנות מערכות בטוח לזיכרון, אלגוריתמי מקביליות בסקייל גבוה, כלי בינארי נמוכי-דרג ומנועי אבטחה.',
+      'tooltip.jsTitle': 'מומחיות ב-JavaScript:',
+      'tooltip.jsText': 'לוגיקה אסינכרונית מודרנית (ES6+), מנועי רינדור בצד הלקוח, ממשקים דינמיים וכלים אינטראקטיביים.',
+      'tooltip.htmlTitle': 'מומחיות ב-HTML5:',
+      'tooltip.htmlText': 'מבנה סמנטי נקי, נגישות לקוראי מסך (A11y), אופטימיזציית SEO ומבנה מסמך תקין.',
+      'tooltip.secTitle': 'מומחיות באבטחת מידע:',
+      'tooltip.secText': 'מחקר פגיצויות, מידול איומים, ביקורת קוד, אימות קריפטוגרפי וארכיטקטורה מאובטחת.',
+      'tooltip.reTitle': 'הנדסה לאחור (Reverse Eng):',
+      'tooltip.reText': 'דקומפילציית קוד בינארי, ניתוח שפת מכונה Assembly, הנדסה לאחור של פרוטוקולים ובדיקת מערכות.',
+      'tooltip.aiTitle': 'מומחיות ב-AI:',
+      'tooltip.aiText': 'אלגוריתמי למידת מכונה, רשתות נוירונים, צינורות נתונים חכמים ומידול חישובי עמוק.',
+      'tooltip.lmTitle': 'מודלי שפה (LM):',
+      'tooltip.lmText': 'אינטגרציית מודלי שפה גדולים (LLM), הנדסת פרומפטים, ארכיטקטורות RAG ו-Fine-tuning.',
+      'github.cardTitle': 'סקירת הקוד שלי ב-GitHub',
+      'github.cardDesc': 'מוזמנים לצפות במאגרי הקוד הפתוח, כלי המערכת, אלגוריתמים ופרויקטי AI ישירות בפרופיל ה-GitHub שלי.',
+      'github.visitBtn': 'בקר ב-@AMLAACH ב-GitHub',
       'footer.rights': 'כל הזכויות שמורות.',
       'footer.top': '↑ למעלה'
     }
@@ -139,10 +165,6 @@
   const mobileToggleBtn = document.getElementById('mobile-toggle');
   const navMenu = document.getElementById('nav-menu');
   const yearEl = document.getElementById('year');
-  const reposContainer = document.getElementById('github-repos-container');
-  const reposCountEl = document.getElementById('public-repos-count');
-  const contactForm = document.getElementById('contact-form');
-  const contactFeedback = document.getElementById('form-feedback');
   const sections = document.querySelectorAll('section[id]');
 
   // Initialize Footer Year
@@ -150,9 +172,7 @@
     yearEl.textContent = new Date().getFullYear();
   }
 
-  // --------------------------------------------------------------------------
-  // 2. Language & Theme Managers
-  // --------------------------------------------------------------------------
+  // Language Manager
   function setLanguage(lang) {
     currentLang = lang;
     localStorage.setItem('amlaach_lang', lang);
@@ -173,6 +193,7 @@
     });
   }
 
+  // Theme Manager
   function setTheme(theme) {
     currentTheme = theme;
     localStorage.setItem('amlaach_theme', theme);
@@ -210,145 +231,7 @@
   }
 
   // --------------------------------------------------------------------------
-  // 3. GitHub API Auto-Loader with Caching
-  // --------------------------------------------------------------------------
-  const GITHUB_USERNAME = 'AMLAACH';
-  const CACHE_TTL_MS = 60 * 60 * 1000; // 1 Hour
-
-  async function loadGitHubData() {
-    if (!reposContainer) return;
-
-    const cachedRepos = localStorage.getItem('amlaach_repos_cache');
-    const cachedTime = localStorage.getItem('amlaach_repos_time');
-    const cachedUser = localStorage.getItem('amlaach_user_cache');
-
-    if (cachedRepos && cachedTime && (Date.now() - parseInt(cachedTime, 10) < CACHE_TTL_MS)) {
-      const repos = JSON.parse(cachedRepos);
-      const user = cachedUser ? JSON.parse(cachedUser) : null;
-      renderRepos(repos);
-      if (user && reposCountEl) reposCountEl.textContent = user.public_repos || repos.length;
-      return;
-    }
-
-    try {
-      // Fetch User Stats & Repos
-      const [userRes, reposRes] = await Promise.all([
-        fetch(`https://api.github.com/users/${GITHUB_USERNAME}`),
-        fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=6`)
-      ]);
-
-      if (!reposRes.ok) throw new Error(`GitHub API error: ${reposRes.status}`);
-
-      const user = userRes.ok ? await userRes.json() : null;
-      const repos = await reposRes.json();
-
-      // Save Cache
-      localStorage.setItem('amlaach_repos_cache', JSON.stringify(repos));
-      localStorage.setItem('amlaach_user_cache', JSON.stringify(user));
-      localStorage.setItem('amlaach_repos_time', Date.now().toString());
-
-      if (user && reposCountEl) {
-        reposCountEl.textContent = user.public_repos || repos.length;
-      }
-
-      renderRepos(repos);
-    } catch (err) {
-      console.warn('GitHub API fetch fallback:', err);
-      renderFallbackRepos();
-    }
-  }
-
-  function renderRepos(repos) {
-    if (!reposContainer) return;
-
-    if (!Array.isArray(repos) || repos.length === 0) {
-      renderFallbackRepos();
-      return;
-    }
-
-    reposContainer.innerHTML = repos.map(repo => `
-      <article class="project-card data-reveal revealed">
-        <div class="project-content">
-          <div class="project-header-meta">
-            <span class="project-type">${repo.language || 'JavaScript'}</span>
-            <div class="project-stats-badge">
-              <span>★ ${repo.stargazers_count}</span>
-              <span>⑂ ${repo.forks_count}</span>
-            </div>
-          </div>
-          <h3 class="project-title">${escapeHTML(repo.name)}</h3>
-          <p class="project-description">
-            ${escapeHTML(repo.description || 'Modern software repository by AMLAACH.')}
-          </p>
-          <ul class="tech-tags">
-            ${repo.topics && repo.topics.length ? repo.topics.map(t => `<li>${escapeHTML(t)}</li>`).join('') : `<li>${escapeHTML(repo.language || 'Code')}</li>`}
-          </ul>
-          <div class="project-links">
-            <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="project-link">
-              <span data-i18n="projects.viewRepo">View Repository</span> &rarr;
-            </a>
-          </div>
-        </div>
-      </article>
-    `).join('');
-
-    setLanguage(currentLang);
-  }
-
-  function renderFallbackRepos() {
-    if (!reposContainer) return;
-    if (reposCountEl) reposCountEl.textContent = '10+';
-
-    const fallbacks = [
-      {
-        name: 'Modern Developer Platform',
-        lang: 'JavaScript',
-        desc: 'A high-performance web interface built with ultra-low latency client render and modular architecture.',
-        url: 'https://github.com/AMLAACH'
-      },
-      {
-        name: 'Distributed Async Engine',
-        lang: 'Node.js',
-        desc: 'A lightweight event-driven queue runner designed for concurrent background processing and telemetry.',
-        url: 'https://github.com/AMLAACH'
-      },
-      {
-        name: 'Bilingual Design System',
-        lang: 'HTML5/CSS3',
-        desc: 'An accessible, RTL-first component library with dynamic theme tokens and zero external dependencies.',
-        url: 'https://github.com/AMLAACH'
-      }
-    ];
-
-    reposContainer.innerHTML = fallbacks.map(repo => `
-      <article class="project-card data-reveal revealed">
-        <div class="project-content">
-          <div class="project-header-meta">
-            <span class="project-type">${repo.lang}</span>
-          </div>
-          <h3 class="project-title">${repo.name}</h3>
-          <p class="project-description">${repo.desc}</p>
-          <div class="project-links">
-            <a href="${repo.url}" target="_blank" rel="noopener noreferrer" class="project-link">
-              <span data-i18n="projects.viewRepo">View Repository</span> &rarr;
-            </a>
-          </div>
-        </div>
-      </article>
-    `).join('');
-  }
-
-  function escapeHTML(str) {
-    return String(str).replace(/[&<>"']/g, match => {
-      const escapeMap = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
-      return escapeMap[match];
-    });
-  }
-
-  loadGitHubData();
-
-  // --------------------------------------------------------------------------
-  // 4. Interactive Particles Canvas Background
+  // 2. Interactive Particles Canvas Background
   // --------------------------------------------------------------------------
   const canvas = document.getElementById('particles-canvas');
   if (canvas && canvas.getContext) {
@@ -356,7 +239,7 @@
     let width = canvas.width = window.innerWidth;
     let height = canvas.height = window.innerHeight;
     let particles = [];
-    const particleCount = Math.min(Math.floor(width / 25), 45);
+    const particleCount = Math.min(Math.floor(width / 24), 45);
 
     class Particle {
       constructor() {
@@ -382,7 +265,7 @@
       draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = currentTheme === 'dark' ? 'rgba(56, 189, 248, 0.4)' : 'rgba(2, 132, 199, 0.3)';
+        ctx.fillStyle = currentTheme === 'dark' ? 'rgba(56, 189, 248, 0.45)' : 'rgba(2, 132, 199, 0.35)';
         ctx.fill();
       }
     }
@@ -403,14 +286,14 @@
           const dy = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < 110) {
+          if (dist < 115) {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
             ctx.strokeStyle = currentTheme === 'dark' 
-              ? `rgba(56, 189, 248, ${0.2 * (1 - dist / 110)})` 
-              : `rgba(2, 132, 199, ${0.15 * (1 - dist / 110)})`;
-            ctx.lineWidth = 0.8;
+              ? `rgba(56, 189, 248, ${0.2 * (1 - dist / 115)})` 
+              : `rgba(2, 132, 199, ${0.15 * (1 - dist / 115)})`;
+            ctx.lineWidth = 0.85;
             ctx.stroke();
           }
         }
@@ -428,7 +311,7 @@
   }
 
   // --------------------------------------------------------------------------
-  // 5. Scroll Reveal & ScrollSpy Active Navigation
+  // 3. Scroll Reveal & ScrollSpy Active Navigation
   // --------------------------------------------------------------------------
   const revealElements = document.querySelectorAll('.data-reveal');
   if ('IntersectionObserver' in window) {
@@ -466,21 +349,5 @@
   }
 
   window.addEventListener('scroll', highlightNavOnScroll, { passive: true });
-
-  // --------------------------------------------------------------------------
-  // 6. Contact Form Handler
-  // --------------------------------------------------------------------------
-  if (contactForm && contactFeedback) {
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      contactFeedback.textContent = translations[currentLang]['contact.success'];
-      contactFeedback.className = 'form-feedback success';
-      contactForm.reset();
-
-      setTimeout(() => {
-        contactFeedback.textContent = '';
-      }, 5000);
-    });
-  }
 
 })();
