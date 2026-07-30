@@ -1,7 +1,7 @@
 /**
  * AMLAACH Portfolio - Core Application Logic
- * Pure ES6 JS handling Themes, Bilingual i18n (Hebrew RTL / English LTR), 
- * Interactive Particle Background Canvas, ScrollSpy Navigation, & Tooltip Accessibility.
+ * Pure ES6 JS handling Themes (Dark Default), Bilingual i18n (English Default / Hebrew RTL), 
+ * Interactive Particle Canvas, & ScrollSpy Navigation.
  */
 
 (function () {
@@ -16,13 +16,14 @@
       'a11y.skip': 'Skip to main content',
       'nav.about': 'About',
       'nav.expertise': 'Specializations',
+      'nav.projects': 'Projects',
       'nav.techstack': 'Tech Stack',
-      'nav.github': 'GitHub',
+      'nav.profiles': 'Profiles',
       'hero.badge': 'Algorithms • Complex Systems • AI',
       'hero.titlePrefix': "Hi, I'm",
       'hero.subtitle': 'Israeli Haredi Software Engineer specializing in high-performance algorithms, complex systems, Artificial Intelligence (AI), Language Models (LM), cybersecurity, and reverse engineering.',
       'hero.ctaGithub': 'GitHub Profile',
-      'hero.ctaExplore': 'Explore Expertise',
+      'hero.ctaProjects': 'Featured Projects',
       'stats.tech': 'Python • Rust • JS • HTML',
       'stats.spec': 'AI • LM • Security • Reverse Eng',
       'stats.eng': 'Algorithms & Complex Systems',
@@ -37,6 +38,8 @@
       'about.labelFocus': 'Core Focus:',
       'about.valueFocus': 'Algorithms, AI/LM & Security',
       'about.labelGitHub': 'GitHub:',
+      'about.labelCommunity': 'Community:',
+      'about.mitmachimLink': 'Hamalach @ Mitmachim Top',
       'exp.title': 'Specializations & Pillars',
       'exp.subtitle': 'Engineering domains and core computational capabilities',
       'exp.title1': 'Algorithms & Complex Systems',
@@ -47,6 +50,16 @@
       'exp.desc3': 'Deep binary analysis, decompilation, protocol reverse engineering, code audit, and cryptographic security assessment.',
       'exp.title4': 'Systems & Web Engineering',
       'exp.desc4': 'Building ultra-fast asynchronous engines, modern user interfaces, and clean modular web tools using JavaScript & HTML5.',
+      'p.title': 'Featured Projects',
+      'p.subtitle': 'Selected software architectures, AI systems, and applications',
+      'p.p1Type': 'Priority #1 • Core Systems Architecture',
+      'p.featured': 'Flagship',
+      'p.p1Desc': 'High-performance computational architecture designed for zero memory allocation overhead, extreme throughput, and complex system hierarchies.',
+      'p.p2Type': 'AI & Semantic NLP Engine',
+      'p.p2Desc': 'Advanced vector-based semantic search engine built for the Otzaria digital library, empowering intelligent contextual queries across massive Hebrew text corpora using AI embeddings.',
+      'p.p3Type': 'Leisure / Audio Application',
+      'p.p3Desc': 'Developed in leisure time - a clean, lightweight audio player application focusing on minimal system footprint, fast responsiveness, and smooth music playback.',
+      'p.viewRepo': 'View Repository',
       'tech.title': 'Technologies & Stack',
       'tech.subtitle': 'Hover or tap on any badge to reveal interactive technical tooltips',
       'tech.catPy': 'AI, Systems & Scripting',
@@ -75,9 +88,13 @@
       'tooltip.aiText': 'Machine learning algorithms, neural networks, intelligent data pipelines, and deep computational modeling.',
       'tooltip.lmTitle': 'Language Models (LM):',
       'tooltip.lmText': 'Large Language Model (LLM) integration, prompt engineering, RAG retrieval architectures, and fine-tuning.',
-      'github.cardTitle': 'Explore My GitHub Codebase',
-      'github.cardDesc': 'Explore open-source repositories, system tools, algorithmic scripts, and AI code projects directly on GitHub.',
-      'github.visitBtn': 'Visit @AMLAACH on GitHub',
+      'profiles.title': 'Profiles & Community',
+      'profiles.subtitle': 'Connect across development platforms and tech forums',
+      'profiles.ghDesc': 'Explore open-source repositories, system architectures, algorithmic libraries, and code.',
+      'profiles.ghBtn': 'Visit @AMLAACH on GitHub',
+      'profiles.mtTitle': 'המלאך | Mitmachim Top',
+      'profiles.mtDesc': 'Israeli Haredi Tech Forum - Community profile & technological contributions.',
+      'profiles.mtBtn': 'Visit Mitmachim Top Profile',
       'footer.rights': 'All rights reserved.',
       'footer.top': '↑ Top'
     },
@@ -86,13 +103,14 @@
       'a11y.skip': 'דלג לתוכן המרכזי',
       'nav.about': 'אודות',
       'nav.expertise': 'התמחויות',
+      'nav.projects': 'פרויקטים',
       'nav.techstack': 'טכנולוגיות',
-      'nav.github': 'GitHub',
+      'nav.profiles': 'פרופילים',
       'hero.badge': 'אלגוריתמים • מערכות מורכבות • AI',
       'hero.titlePrefix': 'שלום, אני',
       'hero.subtitle': 'מהנדס תוכנה חרדי מתמחה באלגוריתמים מתקדמים, מערכות מורכבות, בינה מלאכותית (AI), מודלי שפה (LM), אבטחת מידע והנדסה לאחור.',
       'hero.ctaGithub': 'פרופיל GitHub',
-      'hero.ctaExplore': 'סקירת התמחויות',
+      'hero.ctaProjects': 'פרויקטים נבחרים',
       'stats.tech': 'Python • Rust • JS • HTML',
       'stats.spec': 'AI • LM • אבטחה • הנדסה לאחור',
       'stats.eng': 'אלגוריתמים ומערכות מורכבות',
@@ -107,6 +125,8 @@
       'about.labelFocus': 'התמחות מרכזית:',
       'about.valueFocus': 'אלגוריתמים, AI/LM ואבטחה',
       'about.labelGitHub': 'גיטהאב:',
+      'about.labelCommunity': 'קהילה:',
+      'about.mitmachimLink': 'המלאך בפורום מתמחים טופ',
       'exp.title': 'תחומי התמחות וליבה',
       'exp.subtitle': 'תחומי הנדסה ויכולות חישוביות מרכזיות',
       'exp.title1': 'אלגוריתמים ומערכות מורכבות',
@@ -117,6 +137,16 @@
       'exp.desc3': 'ניתוח קוד בינארי, דקומפילציה, הנדסה לאחור של פרוטוקולים, סקירת אבטחת קוד והערכת סיכונים קריפטוגרפית.',
       'exp.title4': 'הנדסת מערכות וווב',
       'exp.desc4': 'בניית מנועים אסינכרוניים מהירים, ממשקי משתמש מודרניים וכלים מודולריים ב-JavaScript ו-HTML5.',
+      'p.title': 'פרויקטים נבחרים',
+      'p.subtitle': 'ארכיטקטורות תוכנה, מערכות AI ואפליקציות נבחרות',
+      'p.p1Type': 'עדיפות ראשונה • ארכיטקטורת מערכות ליבה',
+      'p.featured': 'פרויקט דגל',
+      'p.p1Desc': 'ארכיטקטורת חישוב בעלת ביצועים גבוהים המיועדת לאפס הצאת זיכרון (Zero-Allocation), מהירות עיבוד מקסימלית והיררכיית מערכות מורכבות.',
+      'p.p2Type': 'מנוע AI וחיפוש סמנטי',
+      'p.p2Desc': 'מנוע חיפוש סמנטי מבוסס וקטורים שפותח עבור ספריית אוצריא, המאפשר שאילתות סמנטיות חכמות על מאגרי טקסט תורניים נרחבים בעזרת AI Embeddings.',
+      'p.p3Type': 'בזמן הפנאי • אפליקציית אודיו',
+      'p.p3Desc': 'פותח בשעות הפנאי - נגן אודיו קל משקל ומהיר הממוקד בצריכת משאבים מינימלית, ממשק נקי וניגון מוזיקה חלק.',
+      'p.viewRepo': 'צפה בגרסה ב-GitHub',
       'tech.title': 'טכנולוגיות וכישורים',
       'tech.subtitle': 'רחף או לחץ על כל באדג\' לצפייה בטולטיפ טכני מפורט',
       'tech.catPy': 'AI, מערכות וסคריפטינג',
@@ -145,18 +175,21 @@
       'tooltip.aiText': 'אלגוריתמי למידת מכונה, רשתות נוירונים, צינורות נתונים חכמים ומידול חישובי עמוק.',
       'tooltip.lmTitle': 'מודלי שפה (LM):',
       'tooltip.lmText': 'אינטגרציית מודלי שפה גדולים (LLM), הנדסת פרומפטים, ארכיטקטורות RAG ו-Fine-tuning.',
-      'github.cardTitle': 'סקירת הקוד שלי ב-GitHub',
-      'github.cardDesc': 'מוזמנים לצפות במאגרי הקוד הפתוח, כלי המערכת, אלגוריתמים ופרויקטי AI ישירות בפרופיל ה-GitHub שלי.',
-      'github.visitBtn': 'בקר ב-@AMLAACH ב-GitHub',
+      'profiles.title': 'פרופילים וקהילה',
+      'profiles.subtitle': 'התחברות בפלטפורמות פיתוח ופורומים טכנולוגיים',
+      'profiles.ghDesc': 'מוזמנים לצפות במאגרי הקוד הפתוח, ארכיטקטורות מערכת ואלגוריתמים ב-GitHub.',
+      'profiles.ghBtn': 'בקר ב-@AMLAACH ב-GitHub',
+      'profiles.mtTitle': 'המלאך | מתמחים טופ',
+      'profiles.mtDesc': 'פורום הטכנולוגיה של הציבור החרדי - פרופיל משתמש ופעילות בקהילת הטכנולוגיה.',
+      'profiles.mtBtn': 'צפה בפרופיל במתמחים טופ',
       'footer.rights': 'כל הזכויות שמורות.',
       'footer.top': '↑ למעלה'
     }
   };
 
-  // State Variables
+  // State Variables (Default: English & Dark Mode)
   let currentLang = localStorage.getItem('amlaach_lang') || 'en';
-  let currentTheme = localStorage.getItem('amlaach_theme') || 
-    (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  let currentTheme = localStorage.getItem('amlaach_theme') || 'dark';
 
   // DOM References
   const langToggleBtn = document.getElementById('lang-toggle');
@@ -200,6 +233,7 @@
     document.documentElement.setAttribute('data-theme', theme);
   }
 
+  // Set English & Dark mode defaults
   setLanguage(currentLang);
   setTheme(currentTheme);
 
