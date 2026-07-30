@@ -1,0 +1,6 @@
+# Allow all web crawlers & search engine bots
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: https://amlaach.github.io/personal-site/sitemap.xml
