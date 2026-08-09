@@ -149,10 +149,12 @@
       </nav>
 
       <div class="header-actions">
-        <!-- Language Switcher -->
-        <button id="lang-toggle" class="icon-btn lang-btn" aria-label="Switch Language / החלף שפה / Changer de langue">
-          <span id="lang-label" class="btn-label">עברית</span>
-        </button>
+        <!-- Segmented 3-Language Picker (HE | EN | FR) -->
+        <div class="lang-selector" id="lang-selector" aria-label="Language Selector / בחר שפה / Langue">
+          <button data-lang="he" class="lang-pill-btn">עברית</button>
+          <button data-lang="en" class="lang-pill-btn">EN</button>
+          <button data-lang="fr" class="lang-pill-btn">FR</button>
+        </div>
 
         <!-- Theme Toggle -->
         <button id="theme-toggle" class="icon-btn theme-btn" aria-label="Toggle Dark / Light Theme">
@@ -296,7 +298,7 @@
 
         <div class="projects-showcase-grid">
           <!-- Project 1: HDDE (Flagship) -->
-          <article class="project-card showcase-card featured-rank1 data-reveal">
+          <article class="project-card showcase-card featured-rank1 data-reveal" data-modal-trigger="hdde">
             <div class="project-content">
               <div class="project-header-meta">
                 <span class="project-type" data-i18n="p.p1Type">Core Systems</span>
@@ -331,7 +333,7 @@
           </article>
 
           <!-- Project 2: Otzaria Semantic Search -->
-          <article class="project-card showcase-card data-reveal">
+          <article class="project-card showcase-card data-reveal" data-modal-trigger="otzaria">
             <div class="project-content">
               <div class="project-header-meta">
                 <span class="project-type" data-i18n="p.p2Type">Search Infrastructure</span>
@@ -365,7 +367,7 @@
           </article>
 
           <!-- Project 3: Just Music -->
-          <article class="project-card showcase-card data-reveal">
+          <article class="project-card showcase-card data-reveal" data-modal-trigger="justmusic">
             <div class="project-content">
               <div class="project-header-meta">
                 <span class="project-type" data-i18n="p.p3Type">Side Project / Audio</span>
@@ -410,7 +412,7 @@
         </div>
 
         <div class="currently-grid data-reveal">
-          <div class="currently-card">
+          <div class="currently-card" data-modal-trigger="hdde">
             <div>
               <div class="currently-tag" data-i18n="curr.tagActive">● ACTIVE DEVELOPMENT</div>
               <h3 class="currently-title">HDDE</h3>
@@ -418,7 +420,7 @@
             </div>
           </div>
 
-          <div class="currently-card">
+          <div class="currently-card" data-modal-trigger="otzaria">
             <div>
               <div class="currently-tag" data-i18n="curr.tagActive">● ACTIVE DEVELOPMENT</div>
               <h3 class="currently-title">Otzaria Semantic Search</h3>
@@ -426,7 +428,7 @@
             </div>
           </div>
 
-          <div class="currently-card">
+          <div class="currently-card" data-modal-trigger="exp1">
             <div>
               <div class="currently-tag" data-i18n="curr.tagResearch">● RESEARCH</div>
               <h3 class="currently-title" data-i18n="curr.aiResTitle">Local AI & CPU Inference</h3>
@@ -446,32 +448,32 @@
         </div>
 
         <div class="experiments-grid data-reveal">
-          <div class="experiment-card">
+          <div class="experiment-card" data-modal-trigger="exp1" style="cursor: pointer;">
             <h3 class="experiment-title" data-i18n="exp1.title">CPU Inference Speed</h3>
             <p class="experiment-desc" data-i18n="exp1.desc">Testing SIMD instructions and cache layouts to run small LLMs fast on normal CPUs.</p>
           </div>
 
-          <div class="experiment-card">
+          <div class="experiment-card" data-modal-trigger="exp2" style="cursor: pointer;">
             <h3 class="experiment-title" data-i18n="exp2.title">MoE Memory Access</h3>
             <p class="experiment-desc" data-i18n="exp2.desc">Looking at memory bottlenecks when switching expert weights in RAM for MoE models.</p>
           </div>
 
-          <div class="experiment-card">
+          <div class="experiment-card" data-modal-trigger="exp3" style="cursor: pointer;">
             <h3 class="experiment-title" data-i18n="exp3.title">Hebrew Vector Search</h3>
             <p class="experiment-desc" data-i18n="exp3.desc">Testing tokenizers and quantized embeddings on Hebrew text collections.</p>
           </div>
 
-          <div class="experiment-card">
+          <div class="experiment-card" data-modal-trigger="exp4" style="cursor: pointer;">
             <h3 class="experiment-title" data-i18n="exp4.title">Zero-Allocation Data Structures</h3>
             <p class="experiment-desc" data-i18n="exp4.desc">Building arena allocators and slab buffers for predictable execution time.</p>
           </div>
 
-          <div class="experiment-card">
+          <div class="experiment-card" data-modal-trigger="exp5" style="cursor: pointer;">
             <h3 class="experiment-title" data-i18n="exp5.title">Quantization Tests</h3>
             <p class="experiment-desc" data-i18n="exp5.desc">Comparing INT4 vs INT8 quality loss when compressing text embeddings.</p>
           </div>
 
-          <div class="experiment-card">
+          <div class="experiment-card" data-modal-trigger="exp6" style="cursor: pointer;">
             <h3 class="experiment-title" data-i18n="exp6.title">Cache-Friendly Algorithms</h3>
             <p class="experiment-desc" data-i18n="exp6.desc">Organizing graph algorithms to fit neatly into CPU L1/L2 caches.</p>
           </div>
@@ -575,6 +577,24 @@
       </div>
     </section>
   </main>
+
+  <!-- Floating Back-To-Top Button (Fixed Left Side) -->
+  <button id="floating-top-btn" class="floating-top-btn" aria-label="Scroll to top / חזרה למעלה" title="Top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <!-- Interactive Technical Modal Container -->
+  <div id="tech-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button id="modal-close" class="modal-close-btn" aria-label="Close modal">&times;</button>
+      <h3 id="modal-title" class="modal-title"></h3>
+      <div id="modal-subtitle" class="modal-subtitle"></div>
+      <p id="modal-body-text" class="modal-body-text"></p>
+      <div class="modal-footer">
+        <button id="modal-ok-btn" class="btn btn-primary" data-i18n="modal.close">OK</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer class="site-footer">

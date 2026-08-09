@@ -1,153 +1,18 @@
 /**
  * AMLAACH Portfolio - Core Application Logic
- * Pure ES6 JS handling Themes (Dark Default), Trilingual i18n (English, Hebrew RTL, French), 
- * Interactive Particle Canvas, & ScrollSpy Navigation.
+ * Pure ES6 JS handling Themes (Dark Default), Trilingual i18n (Hebrew Default, English, French), 
+ * Segmented Language Picker, Interactive Technical Modals, Floating Top Button, Particle Canvas, & ScrollSpy Navigation.
  */
 
 (function () {
   'use strict';
 
   // --------------------------------------------------------------------------
-  // 1. i18n Translations Dictionary (English, Hebrew, French)
+  // 1. i18n Translations Dictionary (Hebrew, English, French)
   // --------------------------------------------------------------------------
   const translations = {
-    en: {
-      langLabel: 'עברית',
-      'a11y.skip': 'Skip to main content',
-      'nav.about': 'About',
-      'nav.philosophy': 'How I Think',
-      'nav.projects': 'Projects',
-      'nav.currently': 'Currently',
-      'nav.experiments': 'Experiments',
-      'nav.timeline': 'Timeline',
-      'nav.techstack': 'Tech Stack',
-      'nav.profiles': 'Profiles',
-      
-      // Hero
-      'hero.title': 'I build software where <span class="gradient-text">performance actually matters</span>.',
-      'hero.subtitle': 'Algorithms, systems engineering, AI tools, and fast code.',
-      'hero.pills': 'Rust · Python · Algorithms · AI · Systems',
-      'hero.btnWork': 'Check out my work',
-      'hero.ctaGithub': 'GitHub',
-
-      // About
-      'about.title': 'About',
-      'about.subtitle': 'Software engineer based in Israel focused on core code and performance.',
-      'about.bioTitle': 'Software Engineer',
-      'about.bioText1': 'I like building algorithms, speed-critical systems, and AI tools. Most of what I build is open source and focused on understanding how code actually runs on hardware.',
-      'about.bioText2': 'I spend most of my time writing Rust for systems, Python for data pipelines, search engines, and binary inspection.',
-      'about.labelName': 'Name:',
-      'about.labelRole': 'Role:',
-      'about.valueRole': 'Software Engineer',
-      'about.labelFocus': 'Main Focus:',
-      'about.valueFocus': 'Algorithms, Systems & AI',
-      'about.labelGitHub': 'GitHub:',
-      'about.labelCommunity': 'Community:',
-      'about.mitmachimLink': 'Hamalach @ Mitmachim Top',
-
-      // Philosophy (How I Think)
-      'phil.title': 'How I Think',
-      'phil.subtitle': 'My approach to code, performance, and design',
-      'phil.quote1': 'I care about the stuff that is easy to skip over: <span class="philosophy-highlight">memory access, algorithmic complexity, concurrency, cache usage, and the hidden cost of abstraction</span>.',
-      'phil.quote2': 'I always want to figure out why code is slow before throwing another layer of optimization at it.',
-
-      // Things I Care About
-      'val.title1': 'Performance',
-      'val.desc1': 'Making hardware do real work before buying more servers.',
-      'val.title2': 'Algorithms',
-      'val.desc2': 'Finding a smarter way to solve the problem, not just writing a faster version of the wrong fix.',
-      'val.title3': 'Systems',
-      'val.desc3': 'Memory, threads, data layout, and everything CPUs force us to figure out.',
-      'val.title4': 'AI',
-      'val.desc4': 'Using models where they actually help, while keeping the rest of the system easy to understand.',
-
-      // Projects
-      'p.title': 'Featured Projects',
-      'p.subtitle': 'Main projects and code I\'ve built',
-      'p.featured': 'Flagship',
-      'p.p1Type': 'Core Systems',
-      'p.p2Type': 'Search Infrastructure',
-      'p.p3Type': 'Side Project / Audio',
-      'p.viewRepo': 'GitHub',
-      'p.hddeTagline': 'Zero-allocation decision engine for high-performance systems.',
-      'p.hddeMetric1': '0 Allocations',
-      'p.labelWhy': 'Why I built it',
-      'p.hddeWhy': 'To cut out heap memory allocation completely during dynamic decision evaluation.',
-      'p.labelInteresting': 'What makes it interesting',
-      'p.hddeInteresting': 'Puts dynamic decision trees into flat memory buffers. Keeps data right next to CPU cache and avoids memory allocations while running.',
-
-      'p.otzariaTagline': 'Fast search combining exact text and meaning for Hebrew books.',
-      'p.otzariaMetric1': '594K Lexical Links',
-      'p.otzariaMetric2': 'Hebrew Semantic Search',
-      'p.otzariaWhy': 'To let people search thousands of classic Hebrew texts in Otzaria by meaning instead of just exact words.',
-      'p.otzariaInteresting': 'Mixes BM25 text search with dense vector embeddings (Qwen3 0.6B) tuned for Hebrew. Runs fast and locally on standard laptops.',
-
-      'p.jmTagline': 'Lightweight audio player built for speed.',
-      'p.jmMetric1': 'Fast Startup',
-      'p.jmMetric2': 'Clean UI',
-      'p.jmWhy': 'Built in spare time to play music instantly without heavy frameworks or lag.',
-      'p.jmInteresting': 'Uses raw Web Audio APIs and simple DOM updates so it opens in a snap and uses almost no RAM.',
-
-      // Currently Building
-      'curr.title': 'Currently Building',
-      'curr.subtitle': 'What I\'m actively coding and researching right now',
-      'curr.tagActive': '● ACTIVE DEVELOPMENT',
-      'curr.tagResearch': '● RESEARCH',
-      'curr.hdde': 'Zero-allocation decision engine in Rust focusing on CPU cache layout.',
-      'curr.otzaria': 'Hybrid search engine combining text and vector search for Hebrew books.',
-      'curr.aiResTitle': 'Local AI & CPU Inference',
-      'curr.aiResDesc': 'Testing CPU inference, quantization, MoE models, and memory-efficient AI execution.',
-
-      // Selected Experiments & Research
-      'exp.title': 'Experiments & Side Research',
-      'exp.subtitle': 'Short tests, benchmarks, and code explorations',
-      'exp1.title': 'CPU Inference Speed',
-      'exp1.desc': 'Testing SIMD instructions and cache layouts to run small LLMs fast on normal CPUs.',
-      'exp2.title': 'MoE Memory Access',
-      'exp2.desc': 'Looking at memory bottlenecks when switching expert weights in RAM for MoE models.',
-      'exp3.title': 'Hebrew Vector Search',
-      'exp3.desc': 'Testing tokenizers and quantized embeddings on Hebrew text collections.',
-      'exp4.title': 'Zero-Allocation Data Structures',
-      'exp4.desc': 'Building arena allocators and slab buffers for predictable execution time.',
-      'exp5.title': 'Quantization Tests',
-      'exp5.desc': 'Comparing INT4 vs INT8 quality loss when compressing text embeddings.',
-      'exp6.title': 'Cache-Friendly Algorithms',
-      'exp6.desc': 'Organizing graph algorithms to fit neatly into CPU L1/L2 caches.',
-
-      // Timeline
-      'time.title': 'Timeline',
-      'time.subtitle': 'How my focus has grown over time',
-      'time.y2024': 'Software & AI — Building core tools and learning machine learning basics.',
-      'time.y2025': 'Otzaria Search — Building search tools for large Hebrew book collections.',
-      'time.y2026': 'Systems & Rust — Focusing on zero-allocation code and local AI inference.',
-
-      // Technologies
-      'tech.title': 'Tech Stack',
-      'tech.subtitle': 'Languages, tools, and topics I work with',
-      'tech.coreTitle': 'Core Stack',
-      'tech.alsoTitle': 'Also Work With',
-      'tech.pillAlgorithms': 'Algorithms',
-      'tech.pillSystems': 'Systems Engineering',
-      'tech.pillAi': 'AI / ML',
-      'tech.pillSearch': 'Vector Search',
-      'tech.pillWeb': 'JavaScript / Web',
-      'tech.pillSecurity': 'Security & Audit',
-      'tech.pillRE': 'Reverse Engineering',
-
-      // Profiles & Footer
-      'profiles.title': 'Open Source & Profiles',
-      'profiles.subtitle': 'Where to find my code and profile',
-      'profiles.ghTitle': 'GitHub Profile',
-      'profiles.ghDesc': 'Check out my open-source repos, algorithms, and projects.',
-      'profiles.ghBtn': 'See @AMLAACH on GitHub',
-      'profiles.mtTitle': 'Hamalach | Mitmachim Top',
-      'profiles.mtDesc': 'Israeli tech community forum — profile and activity.',
-      'profiles.mtBtn': 'See Mitmachim Top Profile',
-      'footer.rights': 'All rights reserved.',
-      'footer.top': '↑ Top'
-    },
     he: {
-      langLabel: 'Français',
+      langLabel: 'עברית',
       'a11y.skip': 'דלג לתוכן המרכזי',
       'nav.about': 'אודות',
       'nav.philosophy': 'איך אני חושב',
@@ -279,10 +144,147 @@
       'profiles.mtDesc': 'פורום טכנולוגיה ישראלי — פרופיל ופעילות בקהילה.',
       'profiles.mtBtn': 'צפה בפרופיל במתמחים טופ',
       'footer.rights': 'כל הזכויות שמורות.',
-      'footer.top': '↑ למעלה'
+      'footer.top': '↑ למעלה',
+      'modal.close': 'סגור'
+    },
+    en: {
+      langLabel: 'English',
+      'a11y.skip': 'Skip to main content',
+      'nav.about': 'About',
+      'nav.philosophy': 'How I Think',
+      'nav.projects': 'Projects',
+      'nav.currently': 'Currently',
+      'nav.experiments': 'Experiments',
+      'nav.timeline': 'Timeline',
+      'nav.techstack': 'Tech Stack',
+      'nav.profiles': 'Profiles',
+      
+      // Hero
+      'hero.title': 'I build software where <span class="gradient-text">performance actually matters</span>.',
+      'hero.subtitle': 'Algorithms, systems engineering, AI tools, and fast code.',
+      'hero.pills': 'Rust · Python · Algorithms · AI · Systems',
+      'hero.btnWork': 'Check out my work',
+      'hero.ctaGithub': 'GitHub',
+
+      // About
+      'about.title': 'About',
+      'about.subtitle': 'Software engineer based in Israel focused on core code and performance.',
+      'about.bioTitle': 'Software Engineer',
+      'about.bioText1': 'I like building algorithms, speed-critical systems, and AI tools. Most of what I build is open source and focused on understanding how code actually runs on hardware.',
+      'about.bioText2': 'I spend most of my time writing Rust for systems, Python for data pipelines, search engines, and binary inspection.',
+      'about.labelName': 'Name:',
+      'about.labelRole': 'Role:',
+      'about.valueRole': 'Software Engineer',
+      'about.labelFocus': 'Main Focus:',
+      'about.valueFocus': 'Algorithms, Systems & AI',
+      'about.labelGitHub': 'GitHub:',
+      'about.labelCommunity': 'Community:',
+      'about.mitmachimLink': 'Hamalach @ Mitmachim Top',
+
+      // Philosophy (How I Think)
+      'phil.title': 'How I Think',
+      'phil.subtitle': 'My approach to code, performance, and design',
+      'phil.quote1': 'I care about the stuff that is easy to skip over: <span class="philosophy-highlight">memory access, algorithmic complexity, concurrency, cache usage, and the hidden cost of abstraction</span>.',
+      'phil.quote2': 'I always want to figure out why code is slow before throwing another layer of optimization at it.',
+
+      // Things I Care About
+      'val.title1': 'Performance',
+      'val.desc1': 'Making hardware do real work before buying more servers.',
+      'val.title2': 'Algorithms',
+      'val.desc2': 'Finding a smarter way to solve the problem, not just writing a faster version of the wrong fix.',
+      'val.title3': 'Systems',
+      'val.desc3': 'Memory, threads, data layout, and everything CPUs force us to figure out.',
+      'val.title4': 'AI',
+      'val.desc4': 'Using models where they actually help, while keeping the rest of the system easy to understand.',
+
+      // Projects
+      'p.title': 'Featured Projects',
+      'p.subtitle': 'Main projects and code I\'ve built',
+      'p.featured': 'Flagship',
+      'p.p1Type': 'Core Systems',
+      'p.p2Type': 'Search Infrastructure',
+      'p.p3Type': 'Side Project / Audio',
+      'p.viewRepo': 'GitHub',
+      'p.hddeTagline': 'Zero-allocation decision engine for high-performance systems.',
+      'p.hddeMetric1': '0 Allocations',
+      'p.labelWhy': 'Why I built it',
+      'p.hddeWhy': 'To cut out heap memory allocation completely during dynamic decision evaluation.',
+      'p.labelInteresting': 'What makes it interesting',
+      'p.hddeInteresting': 'Puts dynamic decision trees into flat memory buffers. Keeps data right next to CPU cache and avoids memory allocations while running.',
+
+      'p.otzariaTagline': 'Fast search combining exact text and meaning for Hebrew books.',
+      'p.otzariaMetric1': '594K Lexical Links',
+      'p.otzariaMetric2': 'Hebrew Semantic Search',
+      'p.otzariaWhy': 'To let people search thousands of classic Hebrew texts in Otzaria by meaning instead of just exact words.',
+      'p.otzariaInteresting': 'Mixes BM25 text search with dense vector embeddings (Qwen3 0.6B) tuned for Hebrew. Runs fast and locally on standard laptops.',
+
+      'p.jmTagline': 'Lightweight audio player built for speed.',
+      'p.jmMetric1': 'Fast Startup',
+      'p.jmMetric2': 'Clean UI',
+      'p.jmWhy': 'Built in spare time to play music instantly without heavy frameworks or lag.',
+      'p.jmInteresting': 'Uses raw Web Audio APIs and simple DOM updates so it opens in a snap and uses almost no RAM.',
+
+      // Currently Building
+      'curr.title': 'Currently Building',
+      'curr.subtitle': 'What I\'m actively coding and researching right now',
+      'curr.tagActive': '● ACTIVE DEVELOPMENT',
+      'curr.tagResearch': '● RESEARCH',
+      'curr.hdde': 'Zero-allocation decision engine in Rust focusing on CPU cache layout.',
+      'curr.otzaria': 'Hybrid search engine combining text and vector search for Hebrew books.',
+      'curr.aiResTitle': 'Local AI & CPU Inference',
+      'curr.aiResDesc': 'Testing CPU inference, quantization, MoE models, and memory-efficient AI execution.',
+
+      // Selected Experiments & Research
+      'exp.title': 'Experiments & Side Research',
+      'exp.subtitle': 'Short tests, benchmarks, and code explorations',
+      'exp1.title': 'CPU Inference Speed',
+      'exp1.desc': 'Testing SIMD instructions and cache layouts to run small LLMs fast on normal CPUs.',
+      'exp2.title': 'MoE Memory Access',
+      'exp2.desc': 'Looking at memory bottlenecks when switching expert weights in RAM for MoE models.',
+      'exp3.title': 'Hebrew Vector Search',
+      'exp3.desc': 'Testing tokenizers and quantized embeddings on Hebrew text collections.',
+      'exp4.title': 'Zero-Allocation Data Structures',
+      'exp4.desc': 'Building arena allocators and slab buffers for predictable execution time.',
+      'exp5.title': 'Quantization Tests',
+      'exp5.desc': 'Comparing INT4 vs INT8 quality loss when compressing text embeddings.',
+      'exp6.title': 'Cache-Friendly Algorithms',
+      'exp6.desc': 'Organizing graph algorithms to fit neatly into CPU L1/L2 caches.',
+
+      // Timeline
+      'time.title': 'Timeline',
+      'time.subtitle': 'How my focus has grown over time',
+      'time.y2024': 'Software & AI — Building core tools and learning machine learning basics.',
+      'time.y2025': 'Otzaria Search — Building search tools for large Hebrew book collections.',
+      'time.y2026': 'Systems & Rust — Focusing on zero-allocation code and local AI inference.',
+
+      // Technologies
+      'tech.title': 'Tech Stack',
+      'tech.subtitle': 'Languages, tools, and topics I work with',
+      'tech.coreTitle': 'Core Stack',
+      'tech.alsoTitle': 'Also Work With',
+      'tech.pillAlgorithms': 'Algorithms',
+      'tech.pillSystems': 'Systems Engineering',
+      'tech.pillAi': 'AI / ML',
+      'tech.pillSearch': 'Vector Search',
+      'tech.pillWeb': 'JavaScript / Web',
+      'tech.pillSecurity': 'Security & Audit',
+      'tech.pillRE': 'Reverse Engineering',
+
+      // Profiles & Footer
+      'profiles.title': 'Open Source & Profiles',
+      'profiles.subtitle': 'Where to find my code and profile',
+      'profiles.ghTitle': 'GitHub Profile',
+      'profiles.ghDesc': 'Check out my open-source repos, algorithms, and projects.',
+      'profiles.ghBtn': 'See @AMLAACH on GitHub',
+      'profiles.mtTitle': 'Hamalach | Mitmachim Top',
+      'profiles.mtDesc': 'Israeli tech community forum — profile and activity.',
+      'profiles.mtBtn': 'See Mitmachim Top Profile',
+      'footer.rights': 'All rights reserved.',
+      'footer.top': '↑ Top',
+      'modal.close': 'Close'
     },
     fr: {
-      langLabel: 'English',
+      langLabel: 'Français',
       'a11y.skip': 'Passer au contenu principal',
       'nav.about': 'À propos',
       'nav.philosophy': 'Ma vision',
@@ -414,25 +416,193 @@
       'profiles.mtDesc': 'Forum tech de la communauté — profil et activité.',
       'profiles.mtBtn': 'Voir le profil Mitmachim Top',
       'footer.rights': 'Tous droits réservés.',
-      'footer.top': '↑ Haut'
+      'footer.top': '↑ Haut',
+      'modal.close': 'Fermer'
     }
   };
 
-  // Supported languages list
-  const supportedLangs = ['en', 'he', 'fr'];
+  // Supported languages list (Default to Hebrew 'he')
+  const supportedLangs = ['he', 'en', 'fr'];
 
-  // State Variables (Default: English & Dark Mode)
-  let currentLang = localStorage.getItem('amlaach_lang') || 'en';
+  // State Variables (Default: Hebrew & Dark Mode)
+  let currentLang = localStorage.getItem('amlaach_lang') || 'he';
   let currentTheme = localStorage.getItem('amlaach_theme') || 'dark';
 
   // DOM References
-  const langToggleBtn = document.getElementById('lang-toggle');
-  const langLabel = document.getElementById('lang-label');
+  const langSelector = document.getElementById('lang-selector');
   const themeToggleBtn = document.getElementById('theme-toggle');
   const mobileToggleBtn = document.getElementById('mobile-toggle');
   const navMenu = document.getElementById('nav-menu');
   const yearEl = document.getElementById('year');
   const sections = document.querySelectorAll('section[id]');
+  const floatingTopBtn = document.getElementById('floating-top-btn');
+
+  // Modal References
+  const modalOverlay = document.getElementById('tech-modal');
+  const modalCloseBtn = document.getElementById('modal-close');
+  const modalOkBtn = document.getElementById('modal-ok-btn');
+  const modalTitle = document.getElementById('modal-title');
+  const modalSubtitle = document.getElementById('modal-subtitle');
+  const modalBodyText = document.getElementById('modal-body-text');
+
+  // --------------------------------------------------------------------------
+  // Modal Technical Details Dictionary
+  // --------------------------------------------------------------------------
+  const modalDetails = {
+    hdde: {
+      en: {
+        title: 'HDDE — Zero-Allocation Decision Architecture',
+        subtitle: 'Systems Engineering / Rust',
+        body: 'HDDE structures hierarchical decision trees into flat contiguous memory buffers. By representing dynamic evaluation nodes as array slices (SoA / ECS pattern), it eliminates dynamic heap allocations (0 allocations) and keeps execution entirely within CPU L1/L2 caches for maximum deterministic throughput.'
+      },
+      he: {
+        title: 'HDDE — ארכיטקטורת החלטות ללא הקצאות זיכרון',
+        subtitle: 'הנדסת מערכות / Rust',
+        body: 'HDDE מארגנת עצי החלטה היררכיים מורכבים בתוך חוצצי זיכרון שטוחים ורציפים. על ידי ייצוג צומתי הערכה בתוך מערכים (במבנה SoA / ECS), המערכת מונעת לחלוטין הצאת זיכרון ב-heap בזמן ריצה ושומרת על ביצוע מהיר במיוחד בתוך ה-L1/L2 Cache של המעבד.'
+      },
+      fr: {
+        title: 'HDDE — Moteur de Décision Sans Allocation',
+        subtitle: 'Ingénierie Système / Rust',
+        body: 'HDDE structure des arbres de décision complexes dans des tampons mémoire contigus. En représentant les nœuds sous forme de tableaux (pattern SoA / ECS), il élimine les allocations mémoire dynamiques sur le tas et garantit une exécution rapide directement dans le cache L1/L2 du CPU.'
+      }
+    },
+    otzaria: {
+      en: {
+        title: 'Otzaria Semantic Search Engine',
+        subtitle: 'Search Infrastructure / AI & Vector Embeddings',
+        body: 'Built for the Otzaria Hebrew digital library, combining BM25 lexical search with dense vector embeddings using Qwen3 0.6B fine-tuned for Hebrew text morphology. Enables fast, contextual semantic queries across 594K+ text links locally on standard consumer computers.'
+      },
+      he: {
+        title: 'מנוע החיפוש הסמנטי של אוצריא',
+        subtitle: 'תשתיות חיפוש / AI והטמעות וקטוריות',
+        body: 'נבנה עבור ספריית אוצריא הדיגיטלית. המנוע משלב חיפוש טקסטואלי לקסיקלי בשיטת BM25 עם הטמעות וקטוריות צפופות של מודל Qwen3 0.6B המותאם לעברית. מאפשר חיפוש הקשרי ומשמעותי על גבי 594,000+ קישורים מקומית על גבי מחשבים רגילים.'
+      },
+      fr: {
+        title: 'Moteur de Recherche Sémantique Otzaria',
+        subtitle: 'Infrastructure de Recherche / IA & Vector Embeddings',
+        body: 'Conçu pour la bibliothèque hébraïque Otzaria, combinant recherche textuelle BM25 et embeddings vectoriels avec le modèle Qwen3 0.6B adapté à la morphologie de l\'hébreu. Permet des recherches contextuelles rapides sur plus de 594 000 liens directement en local.'
+      }
+    },
+    justmusic: {
+      en: {
+        title: 'Just Music — Lightweight Audio Engine',
+        subtitle: 'Audio API / Client-Side JavaScript',
+        body: 'A minimalist audio player built with vanilla Web Audio API and direct DOM manipulation. Designed for instant application launch, zero frame lag, and minimal RAM footprint.'
+      },
+      he: {
+        title: 'Just Music — נגן אודיו קל משקל',
+        subtitle: 'Audio API / JavaScript',
+        body: 'נגן אודיו מינימליסטי שנבנה באמצעות Web Audio API טהור. מתוכנן לטעינה מיידית, אפס השהייה וצריכת זיכרון מינימלית בלבד.'
+      },
+      fr: {
+        title: 'Just Music — Lecteur Audio Léger',
+        subtitle: 'API Web Audio / JavaScript',
+        body: 'Un lecteur audio minimaliste conçu avec l\'API Web Audio native. Pensé pour un démarrage instantané, aucune latence et une consommation RAM minimale.'
+      }
+    },
+    exp1: {
+      en: {
+        title: 'CPU Inference Speed Benchmarks',
+        subtitle: 'AI Research / SIMD & Memory Layout',
+        body: 'Exploring SIMD (AVX2/NEON) vectorization and memory layouts for running quantized local LLM inference efficiently on standard consumer CPU architecture.'
+      },
+      he: {
+        title: 'בנצ\'מארק הרצת AI על מעבד (CPU)',
+        subtitle: 'מחקר AI / וקטוריזציית SIMD ומבני זיכרון',
+        body: 'בדיקת הוראות SIMD (AVX2/NEON) ומבני זיכרון להרצת מודלי שפה מקומיים ומקוונטזים במהירות על מעבדים ביתיים רגילים.'
+      },
+      fr: {
+        title: 'Benchmarks Vitesse d\'Inférence CPU',
+        subtitle: 'Recherche IA / SIMD & Disposition Mémoire',
+        body: 'Exploration des instructions SIMD (AVX2/NEON) et de la disposition mémoire pour exécuter des modèles de langage quantifiés rapidement sur CPU grand public.'
+      }
+    },
+    exp2: {
+      en: {
+        title: 'MoE Memory Locality & Routing',
+        subtitle: 'Systems Research / Concurrency',
+        body: 'Investigating RAM bandwidth bottlenecks when dynamic routing switches active expert weights in Mixture-of-Experts neural network architectures.'
+      },
+      he: {
+        title: 'מיקום זיכרון וניתוח נתיבים ב-MoE',
+        subtitle: 'מחקר מערכות / מקביליות זיכרון',
+        body: 'חקירת צווארי בקבוק ברוחב הפס של ה-RAM בעת החלפה דינמית של משקולות מומחים ברשתות נוירונים מסוג Mixture-of-Experts.'
+      },
+      fr: {
+        title: 'Accès Mémoire et Routage MoE',
+        subtitle: 'Recherche Systèmes / Concurrence',
+        body: 'Analyse des goulots d\'étranglement de la bande passante RAM lors du basculement dynamique des poids d\'experts dans les architectures MoE.'
+      }
+    },
+    exp3: {
+      en: {
+        title: 'Hebrew Vector Retrieval & Tokenization',
+        subtitle: 'NLP Research / Hebrew Embeddings',
+        body: 'Benchmarking morphological subword tokenizers and vector space density for dense retrieval in Semitic languages.'
+      },
+      he: {
+        title: 'שליפה וקטורית וטוקניזציה לעברית',
+        subtitle: 'מחקר NLP / הטמעות בעברית',
+        body: 'בדיקת ביצועים של טוקנייזרים מורפולוגיים וצפיפות המרחב הווקטורי עבור שליפה סמנטית בשפה העברית.'
+      },
+      fr: {
+        title: 'Recherche Vectorielle en Hébreu',
+        subtitle: 'Recherche NLP / Embeddings Hébreu',
+        body: 'Evaluation des tokeniseurs morphologiques et de la densité vectorielle pour la recherche sémantique dans les langues sémitiques.'
+      }
+    },
+    exp4: {
+      en: {
+        title: 'Zero-Allocation Data Structures',
+        subtitle: 'Rust / Memory Safety',
+        body: 'Designing slab allocators, fixed-capacity arenas, and zero-copy view slices for deterministic high-frequency systems.'
+      },
+      he: {
+        title: 'מבני נתונים ללא הקצאות זיכרון',
+        subtitle: 'Rust / בטיחות זיכרון',
+        body: 'תכנון Arena allocators, חוצצים בקיבולת קבועה וסקירות Zero-copy לביצוע דטרמיניסטי במערכות בעלות תדר גבוה.'
+      },
+      fr: {
+        title: 'Structures de Données Zéro Allocation',
+        subtitle: 'Rust / Sécurité Mémoire',
+        body: 'Conception d\'allocateurs arena, de tampons à capacité fixe et de vues zero-copy pour des systèmes déterministes haute fréquence.'
+      }
+    },
+    exp5: {
+      en: {
+        title: 'Embedding Quantization Accuracy Loss',
+        subtitle: 'Machine Learning / Optimization',
+        body: 'Measuring cosine similarity degradation when quantizing dense 768-dim floating point embeddings to INT4 and INT8 integer formats.'
+      },
+      he: {
+        title: 'בדיקת אובדן דיוק בקוונטיזציית הטמעות',
+        subtitle: 'למידת מכונה / אופטימיזציה',
+        body: 'מדידת הירידה בדמיון הקוסינוס בעת דחיסת הטמעות וקטוריות צפופות מ-Float32 לפורמטי INT4 ו-INT8.'
+      },
+      fr: {
+        title: 'Perte de Précision par Quantification',
+        subtitle: 'Machine Learning / Optimisation',
+        body: 'Mesure de la dégradation de la similitude cosinus lors de la quantification d\'embeddings de Float32 vers INT4 et INT8.'
+      }
+    },
+    exp6: {
+      en: {
+        title: 'Cache-Friendly Graph Traversal',
+        subtitle: 'Algorithms / Systems Architecture',
+        body: 'Restructuring graph adjacency lists into cache-line aligned contiguous arrays to maximize CPU prefetching efficiency.'
+      },
+      he: {
+        title: 'אלגוריתמי מעבר על גרפים מודעי-Cache',
+        subtitle: 'אלגוריתמים / ארכיטקטורת מערכות',
+        body: 'ארגון מחדש של רשימות שכנויות בגרפים לתוך מערכים רציפים המותאמים לקווי ה-Cache של המעבד לניצול מרבי של Prefetching.'
+      },
+      fr: {
+        title: 'Parcours de Graphes Adapté au Cache',
+        subtitle: 'Algorithmes / Architecture Système',
+        body: 'Restructuration des listes d\'adjacence de graphes dans des tableaux contigus alignés sur les lignes de cache pour maximiser le préchargement CPU.'
+      }
+    }
+  };
 
   // Initialize Footer Year
   if (yearEl) {
@@ -441,15 +611,23 @@
 
   // Language Manager
   function setLanguage(lang) {
-    if (!supportedLangs.includes(lang)) lang = 'en';
+    if (!supportedLangs.includes(lang)) lang = 'he';
     currentLang = lang;
     localStorage.setItem('amlaach_lang', lang);
 
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
 
-    if (langLabel) {
-      langLabel.textContent = translations[lang].langLabel;
+    // Update active class on language selector buttons
+    if (langSelector) {
+      const btns = langSelector.querySelectorAll('.lang-pill-btn');
+      btns.forEach(btn => {
+        if (btn.getAttribute('data-lang') === lang) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
     }
 
     const elements = document.querySelectorAll('[data-i18n]');
@@ -460,7 +638,6 @@
       }
     });
 
-    // Update placeholders if any
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
       const key = el.getAttribute('data-i18n-placeholder');
       if (translations[lang] && translations[lang][key]) {
@@ -480,12 +657,16 @@
   setLanguage(currentLang);
   setTheme(currentTheme);
 
-  // Cycle languages on toggle button click (en -> he -> fr -> en)
-  if (langToggleBtn) {
-    langToggleBtn.addEventListener('click', () => {
-      const currentIndex = supportedLangs.indexOf(currentLang);
-      const nextLang = supportedLangs[(currentIndex + 1) % supportedLangs.length];
-      setLanguage(nextLang);
+  // Segmented Language Selector Click Event
+  if (langSelector) {
+    const langBtns = langSelector.querySelectorAll('.lang-pill-btn');
+    langBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const selectedLang = btn.getAttribute('data-lang');
+        if (selectedLang) {
+          setLanguage(selectedLang);
+        }
+      });
     });
   }
 
@@ -509,6 +690,74 @@
       });
     });
   }
+
+  // --------------------------------------------------------------------------
+  // Floating Back-To-Top Button (Fixed Left Side)
+  // --------------------------------------------------------------------------
+  if (floatingTopBtn) {
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        floatingTopBtn.classList.add('visible');
+      } else {
+        floatingTopBtn.classList.remove('visible');
+      }
+    }, { passive: true });
+
+    floatingTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+
+  // --------------------------------------------------------------------------
+  // Technical Modal Popups
+  // --------------------------------------------------------------------------
+  function openModal(triggerId) {
+    if (!modalOverlay || !modalDetails[triggerId]) return;
+    const detail = modalDetails[triggerId][currentLang] || modalDetails[triggerId]['en'];
+    
+    if (modalTitle) modalTitle.textContent = detail.title;
+    if (modalSubtitle) modalSubtitle.textContent = detail.subtitle;
+    if (modalBodyText) modalBodyText.textContent = detail.body;
+
+    modalOverlay.classList.add('open');
+    modalOverlay.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeModal() {
+    if (!modalOverlay) return;
+    modalOverlay.classList.remove('open');
+    modalOverlay.setAttribute('aria-hidden', 'true');
+  }
+
+  // Attach click listeners to data-modal-trigger elements
+  document.querySelectorAll('[data-modal-trigger]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      // Avoid triggering when clicking links inside project cards
+      if (e.target.closest('a')) return;
+      const triggerId = el.getAttribute('data-modal-trigger');
+      if (triggerId) {
+        openModal(triggerId);
+      }
+    });
+  });
+
+  if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+  if (modalOkBtn) modalOkBtn.addEventListener('click', closeModal);
+
+  if (modalOverlay) {
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) closeModal();
+    });
+  }
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modalOverlay && modalOverlay.classList.contains('open')) {
+      closeModal();
+    }
+  });
 
   // --------------------------------------------------------------------------
   // 2. Interactive Particles Canvas Background
