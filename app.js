@@ -609,6 +609,30 @@
     yearEl.textContent = new Date().getFullYear();
   }
 
+  const langDisplayNames = {
+    he: 'עברית',
+    en: 'English',
+    fr: 'Français'
+  };
+
+  function updateLangSelectorUI() {
+    if (!langSelector) return;
+    langSelector.innerHTML = '';
+
+    supportedLangs.forEach(lang => {
+      if (lang !== currentLang) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'lang-pill-btn';
+        btn.setAttribute('data-lang', lang);
+        btn.setAttribute('aria-label', `Switch to ${langDisplayNames[lang]}`);
+        btn.textContent = langDisplayNames[lang];
+        btn.addEventListener('click', () => setLanguage(lang));
+        langSelector.appendChild(btn);
+      }
+    });
+  }
+
   // Language Manager
   function setLanguage(lang) {
     if (!supportedLangs.includes(lang)) lang = 'he';
@@ -618,17 +642,8 @@
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
 
-    // Update active class on language selector buttons
-    if (langSelector) {
-      const btns = langSelector.querySelectorAll('.lang-pill-btn');
-      btns.forEach(btn => {
-        if (btn.getAttribute('data-lang') === lang) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
-        }
-      });
-    }
+    // Render target language buttons
+    updateLangSelectorUI();
 
     const elements = document.querySelectorAll('[data-i18n]');
     elements.forEach(el => {
@@ -656,19 +671,6 @@
   // Set initial language & Dark mode defaults
   setLanguage(currentLang);
   setTheme(currentTheme);
-
-  // Segmented Language Selector Click Event
-  if (langSelector) {
-    const langBtns = langSelector.querySelectorAll('.lang-pill-btn');
-    langBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const selectedLang = btn.getAttribute('data-lang');
-        if (selectedLang) {
-          setLanguage(selectedLang);
-        }
-      });
-    });
-  }
 
   if (themeToggleBtn) {
     themeToggleBtn.addEventListener('click', () => {
