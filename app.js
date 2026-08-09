@@ -1,6 +1,6 @@
 /**
  * AMLAACH Portfolio - Core Application Logic
- * Pure ES6 JS handling Themes (Dark Default), Bilingual i18n (English Default / Hebrew RTL), 
+ * Pure ES6 JS handling Themes (Dark Default), Trilingual i18n (English, Hebrew RTL, French), 
  * Interactive Particle Canvas, & ScrollSpy Navigation.
  */
 
@@ -8,7 +8,7 @@
   'use strict';
 
   // --------------------------------------------------------------------------
-  // 1. i18n Translations Dictionary
+  // 1. i18n Translations Dictionary (English, Hebrew, French)
   // --------------------------------------------------------------------------
   const translations = {
     en: {
@@ -20,24 +20,25 @@
       'nav.currently': 'Currently',
       'nav.experiments': 'Experiments',
       'nav.timeline': 'Timeline',
-      'nav.techstack': 'Stack',
+      'nav.techstack': 'Tech Stack',
       'nav.profiles': 'Profiles',
       
       // Hero
-      'hero.subtitle': 'Algorithms, systems engineering, AI infrastructure and high-performance computing.',
+      'hero.title': 'I build software where <span class="gradient-text">performance actually matters</span>.',
+      'hero.subtitle': 'Algorithms, systems engineering, AI tools, and fast code.',
       'hero.pills': 'Rust · Python · Algorithms · AI · Systems',
-      'hero.btnWork': 'View my work',
+      'hero.btnWork': 'Check out my work',
 
       // About
       'about.title': 'About',
-      'about.subtitle': 'Software engineer based in Israel focused on core engineering and performance.',
+      'about.subtitle': 'Software engineer based in Israel focused on core code and performance.',
       'about.bioTitle': 'Software Engineer',
-      'about.bioText1': 'I enjoy working on algorithms, performance-critical systems, and AI infrastructure. Most of my work is open-source and built around understanding low-level computational constraints.',
-      'about.bioText2': 'My engineering focus centers on memory-safe systems programming in Rust, data pipelines in Python, search infrastructure, and binary inspection.',
+      'about.bioText1': 'I like building algorithms, speed-critical systems, and AI tools. Most of what I build is open source and focused on understanding how code actually runs on hardware.',
+      'about.bioText2': 'I spend most of my time writing Rust for systems, Python for data pipelines, search engines, and binary inspection.',
       'about.labelName': 'Name:',
       'about.labelRole': 'Role:',
       'about.valueRole': 'Software Engineer',
-      'about.labelFocus': 'Core Focus:',
+      'about.labelFocus': 'Main Focus:',
       'about.valueFocus': 'Algorithms, Systems & AI',
       'about.labelGitHub': 'GitHub:',
       'about.labelCommunity': 'Community:',
@@ -45,94 +46,94 @@
 
       // Philosophy (How I Think)
       'phil.title': 'How I Think',
-      'phil.subtitle': 'Engineering approach to complexity, performance, and architecture',
-      'phil.quote1': 'I care about the parts of software that are easy to overlook: memory access, algorithmic complexity, concurrency, cache behavior and the cost of abstraction.',
-      'phil.quote2': 'I prefer understanding why a system is slow before adding another layer of optimization.',
+      'phil.subtitle': 'My approach to code, performance, and design',
+      'phil.quote1': 'I care about the stuff that is easy to skip over: <span class="philosophy-highlight">memory access, algorithmic complexity, concurrency, cache usage, and the hidden cost of abstraction</span>.',
+      'phil.quote2': 'I always want to figure out why code is slow before throwing another layer of optimization at it.',
 
       // Things I Care About
       'val.title1': 'Performance',
-      'val.desc1': 'Making hardware do useful work before adding more hardware.',
+      'val.desc1': 'Making hardware do real work before buying more servers.',
       'val.title2': 'Algorithms',
-      'val.desc2': 'Finding better ways to solve the problem, not merely faster implementations of the wrong solution.',
+      'val.desc2': 'Finding a smarter way to solve the problem, not just writing a faster version of the wrong fix.',
       'val.title3': 'Systems',
-      'val.desc3': 'Memory, concurrency, data layout and everything CPUs apparently decided humans should understand.',
+      'val.desc3': 'Memory, threads, data layout, and everything CPUs force us to figure out.',
       'val.title4': 'AI',
-      'val.desc4': 'Using models where they help, while keeping the underlying system understandable.',
+      'val.desc4': 'Using models where they actually help, while keeping the rest of the system easy to understand.',
 
       // Projects
       'p.title': 'Featured Projects',
-      'p.subtitle': 'Key software architectures and engineering solutions',
+      'p.subtitle': 'Main projects and code I\'ve built',
       'p.featured': 'Flagship',
-      'p.hddeTagline': 'Zero-allocation hierarchical decision architecture for high-performance systems.',
+      'p.hddeTagline': 'Zero-allocation decision engine for high-performance systems.',
       'p.labelWhy': 'Why I built it',
-      'p.hddeWhy': 'To eliminate runtime heap allocation overhead in dynamic utility evaluation systems.',
+      'p.hddeWhy': 'To cut out heap memory allocation completely during dynamic decision evaluation.',
       'p.labelInteresting': 'What makes it interesting',
-      'p.hddeInteresting': 'Organizes complex hierarchical decision trees into flat contiguous memory buffers. Maximizes CPU cache locality while avoiding dynamic allocations during execution.',
+      'p.hddeInteresting': 'Puts dynamic decision trees into flat memory buffers. Keeps data right next to CPU cache and avoids memory allocations while running.',
 
-      'p.otzariaTagline': 'Hybrid lexical + semantic retrieval for large Hebrew corpora.',
-      'p.otzariaWhy': 'To enable contextual, meaning-based queries across thousands of historical Hebrew texts in Otzaria.',
-      'p.otzariaInteresting': 'Combines BM25 lexical indexing with dense vector embeddings (Qwen3 0.6B) tuned for Hebrew morphology. Delivers fast local retrieval on consumer hardware.',
+      'p.otzariaTagline': 'Fast search combining exact text and meaning for Hebrew books.',
+      'p.otzariaWhy': 'To let people search thousands of classic Hebrew texts in Otzaria by meaning instead of just exact words.',
+      'p.otzariaInteresting': 'Mixes BM25 text search with dense vector embeddings (Qwen3 0.6B) tuned for Hebrew. Runs fast and locally on standard laptops.',
 
-      'p.jmTagline': 'Lightweight audio player focusing on minimal system footprint.',
-      'p.jmWhy': 'Created in spare time for instant audio playback without heavy framework dependencies.',
-      'p.jmInteresting': 'Built with vanilla Web Audio APIs and lightweight DOM manipulation for instant startup and low RAM usage.',
+      'p.jmTagline': 'Lightweight audio player built for speed.',
+      'p.jmWhy': 'Built in spare time to play music instantly without heavy frameworks or lag.',
+      'p.jmInteresting': 'Uses raw Web Audio APIs and simple DOM updates so it opens in a snap and uses almost no RAM.',
 
       // Currently Building
       'curr.title': 'Currently Building',
-      'curr.subtitle': 'Active projects, ongoing engineering work, and current research',
-      'curr.hdde': 'Hierarchical decision architecture in Rust focusing on cache layout and zero allocations.',
-      'curr.otzaria': 'Hybrid lexical + semantic retrieval engine for large Hebrew text corpora.',
-      'curr.aiResTitle': 'AI / Local Inference Research',
-      'curr.aiResDesc': 'Exploring CPU inference, quantization, MoE architectures and memory-efficient computation.',
+      'curr.subtitle': 'What I\'m actively coding and researching right now',
+      'curr.hdde': 'Zero-allocation decision engine in Rust focusing on CPU cache layout.',
+      'curr.otzaria': 'Hybrid search engine combining text and vector search for Hebrew books.',
+      'curr.aiResTitle': 'Local AI & CPU Inference',
+      'curr.aiResDesc': 'Testing CPU inference, quantization, MoE models, and memory-efficient AI execution.',
 
       // Selected Experiments & Research
-      'exp.title': 'Experiments & Research',
-      'exp.subtitle': 'Focused explorations and technical benchmarks',
-      'exp1.title': 'CPU Inference Optimization',
-      'exp1.desc': 'Testing SIMD vectorization and cache locality for small LLM inference on consumer CPUs.',
-      'exp2.title': 'MoE Memory Locality',
-      'exp2.desc': 'Analyzing Mixture-of-Experts routing overhead and expert weight layout in system RAM.',
-      'exp3.title': 'Hebrew Vector Retrieval',
-      'exp3.desc': 'Benchmarking morphological tokenizers and embedding quantization for Hebrew text.',
-      'exp4.title': 'Zero-Allocation Structures',
-      'exp4.desc': 'Designing slab allocators and arena memory buffers for deterministic execution.',
-      'exp5.title': 'Quantization Experiments',
-      'exp5.desc': 'Comparing INT4 vs INT8 quantization accuracy loss on specialized domain embeddings.',
-      'exp6.title': 'Cache-Aware Algorithms',
-      'exp6.desc': 'Structuring graph traversal algorithms for CPU L1/L2 cache prefetching efficiency.',
+      'exp.title': 'Experiments & Side Research',
+      'exp.subtitle': 'Short tests, benchmarks, and code explorations',
+      'exp1.title': 'CPU Inference Speed',
+      'exp1.desc': 'Testing SIMD instructions and cache layouts to run small LLMs fast on normal CPUs.',
+      'exp2.title': 'MoE Memory Access',
+      'exp2.desc': 'Looking at memory bottlenecks when switching expert weights in RAM for MoE models.',
+      'exp3.title': 'Hebrew Vector Search',
+      'exp3.desc': 'Testing tokenizers and quantized embeddings on Hebrew text collections.',
+      'exp4.title': 'Zero-Allocation Data Structures',
+      'exp4.desc': 'Building arena allocators and slab buffers for predictable execution time.',
+      'exp5.title': 'Quantization Tests',
+      'exp5.desc': 'Comparing INT4 vs INT8 quality loss when compressing text embeddings.',
+      'exp6.title': 'Cache-Friendly Algorithms',
+      'exp6.desc': 'Organizing graph algorithms to fit neatly into CPU L1/L2 caches.',
 
       // Timeline
       'time.title': 'Timeline',
-      'time.subtitle': 'Evolution of engineering focus and technical milestones',
-      'time.y2024': 'Software & AI projects — Building core tools and exploring machine learning fundamentals.',
-      'time.y2025': 'Otzaria / Search Infrastructure — Building hybrid lexical and vector search engines.',
-      'time.y2026': 'Systems, Rust & Algorithms — Focus on zero-allocation architectures and CPU inference research.',
+      'time.subtitle': 'How my focus has grown over time',
+      'time.y2024': 'Software & AI — Building core tools and learning machine learning basics.',
+      'time.y2025': 'Otzaria Search — Building search tools for large Hebrew book collections.',
+      'time.y2026': 'Systems & Rust — Focusing on zero-allocation code and local AI inference.',
 
       // Technologies
-      'tech.title': 'Technologies',
-      'tech.subtitle': 'Core languages, tools, and technical areas',
+      'tech.title': 'Tech Stack',
+      'tech.subtitle': 'Languages, tools, and topics I work with',
       'tech.coreTitle': 'Core Stack',
       'tech.alsoTitle': 'Also Work With',
       'tech.pillAlgorithms': 'Algorithms',
       'tech.pillSystems': 'Systems Engineering',
       'tech.pillSearch': 'Vector Search',
-      'tech.pillSecurity': 'Security & Binary Audit',
+      'tech.pillSecurity': 'Security & Audit',
       'tech.pillRE': 'Reverse Engineering',
 
       // Profiles & Footer
       'profiles.title': 'Open Source & Profiles',
-      'profiles.subtitle': 'Connect across development platforms and tech communities',
+      'profiles.subtitle': 'Where to find my code and profile',
       'profiles.ghTitle': 'GitHub Profile',
-      'profiles.ghDesc': 'Browse open-source repositories, system architectures, algorithms, and code.',
-      'profiles.ghBtn': 'Visit @AMLAACH on GitHub',
-      'profiles.mtTitle': 'המלאך | Mitmachim Top',
-      'profiles.mtDesc': 'Haredi tech community forum — profile and community activity.',
-      'profiles.mtBtn': 'Visit Mitmachim Top Profile',
+      'profiles.ghDesc': 'Check out my open-source repos, algorithms, and projects.',
+      'profiles.ghBtn': 'See @AMLAACH on GitHub',
+      'profiles.mtTitle': 'Hamalach | Mitmachim Top',
+      'profiles.mtDesc': 'Israeli tech community forum — profile and activity.',
+      'profiles.mtBtn': 'See Mitmachim Top Profile',
       'footer.rights': 'All rights reserved.',
       'footer.top': '↑ Top'
     },
     he: {
-      langLabel: 'English',
+      langLabel: 'Français',
       'a11y.skip': 'דלג לתוכן המרכזי',
       'nav.about': 'אודות',
       'nav.philosophy': 'איך אני חושב',
@@ -144,7 +145,8 @@
       'nav.profiles': 'פרופילים',
 
       // Hero
-      'hero.subtitle': 'אלגוריתמים, הנדסת מערכות, תשתיות AI וחישוב בעל ביצועים גבוהים.',
+      'hero.title': 'אני בונה תוכנה במקומות שבהם <span class="gradient-text">ביצועים באמת משנים</span>.',
+      'hero.subtitle': 'אלגוריתמים, הנדסת מערכות, תשתיות AI וקוד מהיר.',
       'hero.pills': 'Rust · Python · אלגוריתמים · AI · מערכות',
       'hero.btnWork': 'צפה בעבודות שלי',
 
@@ -152,8 +154,8 @@
       'about.title': 'אודות',
       'about.subtitle': 'מהנדס תוכנה מישראל הממוקד בהנדסת ליבה וביצועים.',
       'about.bioTitle': 'מהנדס תוכנה',
-      'about.bioText1': 'אני עובד על אלגוריתמים, מערכות קריטיות לביצועים, ותשתיות בינה מלאכותית. רוב העבודות שלי בקוד פתוח ומבוססות על הבנת מגבלות חישוב נמוכות-דרג.',
-      'about.bioText2': 'מיקוד ההנדסה שלי מתרכז בתכנות מערכות בטוח לזיכרון ב-Rust, צינורות נתונים ב-Python, תשתיות חיפוש, וביקורת בינארית.',
+      'about.bioText1': 'אני אוהב לבנות אלגוריתמים, מערכות קריטיות למהירות, ותשתיות בינה מלאכותית. רוב הקוד שלי בקוד פתוח ומבוסס על הבנת אופן ריצת הקוד על החומרה.',
+      'about.bioText2': 'אני משקיע את רוב הזמן בכתיבת Rust למערכות, Python לצינורות נתונים, מנועי חיפוש, וביקורת בינארית.',
       'about.labelName': 'שם:',
       'about.labelRole': 'תפקיד:',
       'about.valueRole': 'מהנדס תוכנה',
@@ -165,93 +167,217 @@
 
       // Philosophy (How I Think)
       'phil.title': 'איך אני חושב',
-      'phil.subtitle': 'גישה הנדסית למורכבות, ביצועים וארכיטקטורה',
-      'phil.quote1': 'אכפת לי מהחלקים בתוכנה שקל להתעלם מהם: גישה לזיכרון, מורכבות אלגוריתמית, מקביליות, התנהגות Cache ועלות האבסטרקציה.',
-      'phil.quote2': 'אני מעדיף להבין למה מערכת איטית לפני שמוסיפים עוד שכבה של אופטימיזציה.',
+      'phil.subtitle': 'הגישה שלי לקוד, ביצועים וארכיטקטורה',
+      'phil.quote1': 'אכפת לי מהדברים שקל להתעלם מהם בתוכנה: <span class="philosophy-highlight">גישה לזיכרון, מורכבות אלגוריתמית, מקביליות, התנהגות Cache והעלות של אבסטרקציות</span>.',
+      'phil.quote2': 'אני מעדיף להבין למה קוד הוא איטי לפני שאני מוסיף עוד שכבת אופטימיזציה.',
 
       // Things I Care About
       'val.title1': 'ביצועים',
-      'val.desc1': 'לגרום לחומרה לעשות עבודה מועילה לפני שמוסיפים עוד חומרה.',
+      'val.desc1': 'לגרום לחומרה לעשות עבודה אמיתית לפני שקונים עוד שרתים.',
       'val.title2': 'אלגוריתמים',
-      'val.desc2': 'מציאת דרכים טובות יותר לפתור את הבעיה, ולא רק מימוש מהיר יותר של הפתרון השגוי.',
+      'val.desc2': 'מציאת דרך חכמה יותר לפתור את הבעיה, ולא רק כתיבה מהירה יותר של פתרון שגוי.',
       'val.title3': 'מערכות',
-      'val.desc3': 'זיכרון, מקביליות, מבנה נתונים וכל מה שמעבדים כנראה החליטו שבני אדם אמורים להבין.',
+      'val.desc3': 'זיכרון, תהליכונים, מבנה נתונים וכל מה שמעבדים דורשים שנבין.',
       'val.title4': 'בינה מלאכותית',
-      'val.desc4': 'שימוש במודלים איפה שהם עוזרים, תוך שמירה על המערכת שמתחתיהם מובנת.',
+      'val.desc4': 'שימוש במודלים איפה שהם באמת עוזרים, תוך שמירה על יתר המערכת פשוטה ומובנת.',
 
       // Projects
       'p.title': 'פרויקטים נבחרים',
-      'p.subtitle': 'ארכיטקטורות תוכנה ופתרונות הנדסיים מרכזיים',
+      'p.subtitle': 'פרויקטים מרכזיים וקוד שבניתי',
       'p.featured': 'פרויקט דגל',
-      'p.hddeTagline': 'ארכיטקטורת היררכיה ללא הצאת זיכרון עבור מערכות בעלות ביצועים גבוהים.',
+      'p.hddeTagline': 'מנוע החלטות ללא הצאת זיכרון עבור מערכות בעלות ביצועים גבוהים.',
       'p.labelWhy': 'למה בניתי את זה',
-      'p.hddeWhy': 'כדי לבטל את תקורת הצאת הזיכרון (heap allocations) בזמן ריצה במערכות הערכה דינמיות.',
+      'p.hddeWhy': 'כדי לבטל לחלוטין הצאת זיכרון ב-heap בזמן הערכת החלטות דינמית.',
       'p.labelInteresting': 'מה הופך את זה למעניין',
-      'p.hddeInteresting': 'מארגן עצי החלטה היררכיים מורכבים בתוך חוצצי זיכרון רציפים ושטוחים. ממקסם את ניצול ה-Cache של המעבד תוך הימנעות ממוחלטת מהקצאות דינמיות בזמן ביצוע.',
+      'p.hddeInteresting': 'מארגן עצי החלטה בתוך חוצצי זיכרון שטוחים. שומר על הנתונים קרוב ל-Cache של המעבד ונמנע מהקצאות זיכרון בזמן ריצה.',
 
-      'p.otzariaTagline': 'שליפה היברידית לקסיקלית + סמנטית עבור מאגרי טקסט בעברית.',
-      'p.otzariaWhy': 'כדי לאפשר שאילתות סמנטיות מבוססות הקשר ומשמעות על גבי אלפי טקסטים תורניים בספריית אוצריא.',
-      'p.otzariaInteresting': 'משלב אינדוקס לקסיקלי בשיטת BM25 עם הטמעות וקטוריות צפופות (Qwen3 0.6B) המותאמות למורפולוגיה של השפה העברית. מספק שליפה מקומית מהירה על חומרה ביתית.',
+      'p.otzariaTagline': 'חיפוש מהיר המשלב טקסט מדויק ומשמעות עבור ספרים בעברית.',
+      'p.otzariaWhy': 'כדי לאפשר לאנשים לחפש באלפי טקסטים תורניים באוצריא לפי משמעות ולא רק לפי מילים מדויקות.',
+      'p.otzariaInteresting': 'משלב חיפוש טקסטואלי BM25 עם הטמעות וקטוריות (Qwen3 0.6B) המותאמות לעברית. רץ מהיר ומקומי על מחשבים ניידים רגילים.',
 
-      'p.jmTagline': 'נגן אודיו קל משקל הממוקד בצריכת משאבים מינימלית.',
-      'p.jmWhy': 'נוצר בזמן הפנאי עבור ניגון אודיו מיידי ללא תלויות בספריות או פרימוורקים כבדים.',
-      'p.jmInteresting': 'נבנה באמצעות Web Audio APIs טהור ומניפולציות DOM קלות משקל לטעינה מיידית וצריכת זיכרון מינימלית.',
+      'p.jmTagline': 'נגן אודיו קל משקל שנבנה למהירות.',
+      'p.jmWhy': 'נוצר בזמן הפנאי לנגן מוזיקה מיידית ללא פרימוורקים כבדים או איטיות.',
+      'p.jmInteresting': 'משתמש ב-Web Audio APIs טהור ועדכוני DOM פשוטים כדי להיפתח כהרף עין ולצרוך כמעט אפס RAM.',
 
       // Currently Building
       'curr.title': 'כעת בפיתוח',
-      'curr.subtitle': 'פרויקטים פעילים, עבודה הנדסית שוטפת ומחקר עכשווי',
-      'curr.hdde': 'ארכיטקטורת החלטה היררכית ב-Rust הממוקדת ב-Cache layout ובאפס הקצאות זיכרון.',
-      'curr.otzaria': 'מנוע שליפה היברידי לקסיקלי + סמנטי עבור מאגרי טקסט נרחבים בעברית.',
-      'curr.aiResTitle': 'מחקר AI / הרצה מקומית',
-      'curr.aiResDesc': 'חקירת הרצת מודלים על CPU, קוונטיזציה, ארכיטקטורות MoE וחישוב חסכוני בזיכרון.',
+      'curr.subtitle': 'מה שאני מפתח וחוקר באופן פעיל עכשיו',
+      'curr.hdde': 'מנוע החלטות ב-Rust הממוקד במבנה זיכרון ב-Cache ללא הקצאות.',
+      'curr.otzaria': 'מנוע חיפוש היברידי המשלב חיפוש טקסט וחיפוש וקטורי לספרים בעברית.',
+      'curr.aiResTitle': 'AI מקומי והרצת CPU',
+      'curr.aiResDesc': 'בדיקת הרצת מודלים על CPU, קוונטיזציה, מודלי MoE וחישוב חסכוני בזיכרון.',
 
       // Selected Experiments & Research
-      'exp.title': 'ניסויים ומחקר',
-      'exp.subtitle': 'חקירות ממוקדות ובנצ'מארקים טכניים',
-      'exp1.title': 'אופטימיזציית הרצת CPU',
-      'exp1.desc': 'בדיקת וקטוריזציית SIMD ו-Cache locality עבור הרצת מודלי שפה קטנים על מעבדים ביתיים.',
-      'exp2.title': 'מיקום זיכרון ב-MoE',
-      'exp2.desc': 'ניתוח תקורת נתיבי Mixture-of-Experts ומבנה משקולות המומחים ב-RAM.',
-      'exp3.title': 'שליפה וקטורית בעברית',
-      'exp3.desc': 'בנצ'מארק של טוקנייזרים מורפולוגיים וקוונטיזציית הטמעות עבור טקסט בעברית.',
+      'exp.title': 'ניסויים ומחקר צדדי',
+      'exp.subtitle': 'בדיקות קצרות, בנצ'מארקים וחקירות קוד',
+      'exp1.title': 'מהירות הרצת CPU',
+      'exp1.desc': 'בדיקת הוראות SIMD ומבני Cache להרצת LLMs קטנים במהירות על מעבדים רגילים.',
+      'exp2.title': 'גישת זיכרון ב-MoE',
+      'exp2.desc': 'בדיקת צווארי בקבוק בזיכרון בעת החלפת משקולות מומחים ב-RAM.',
+      'exp3.title': 'חיפוש וקטורי בעברית',
+      'exp3.desc': 'בדיקת טוקנייזרים והטמעות מקוונטזות על מאגרי טקסט בעברית.',
       'exp4.title': 'מבנים ללא הצאת זיכרון',
-      'exp4.desc': 'תכנון Slab allocators ו-Arena buffers עבור ביצוע דטרמיניסטי.',
-      'exp5.title': 'ניסויי קוונטיזציה',
-      'exp5.desc': 'השוואת איבוד דיוק ב-INT4 מול INT8 על גבי הטמעות בתחומים ממוקדים.',
+      'exp4.desc': 'בניית Arena allocators ו-Slab buffers לזמן ביצוע צפוי מראש.',
+      'exp5.title': 'בדיקות קוונטיזציה',
+      'exp5.desc': 'השוואת איבוד איכות ב-INT4 מול INT8 בעת דחיסת הטמעות טקסט.',
       'exp6.title': 'אלגוריתמים מודעי-Cache',
-      'exp6.desc': 'ארגון אלגוריתמי מעבר על גרפים עבור יעילות prefetching ב-Cache של המעבד.',
+      'exp6.desc': 'ארגון אלגוריתמי גרפים להתאמה נקייה ל-L1/L2 Cache של המעבד.',
 
       // Timeline
       'time.title': 'ציר זמן',
-      'time.subtitle': 'התפתחות המיקוד ההנדסי והאבנים המרכזיות',
-      'time.y2024': 'פרויקטי תוכנה ו-AI — בניית כלי ליבה וחקירת יסודות למידת מכונה.',
-      'time.y2025': 'אוצריא / תשתיות חיפוש — בניית מנועי חיפוש היברידיים ולקסיקליים.',
-      'time.y2026': 'מערכות, Rust ואלגוריתמים — מיקוד בארכיטקטורות ללא הקצאות ומחקר הרצת CPU.',
+      'time.subtitle': 'איך המיקוד שלי התפתח עם הזמן',
+      'time.y2024': 'תוכנה ו-AI — בניית כלי ליבה ולימוד יסודות למידת מכונה.',
+      'time.y2025': 'חיפוש באוצריא — בניית כלי חיפוש עבור מאגרי ספרים גדולים בעברית.',
+      'time.y2026': 'מערכות ו-Rust — מיקוד בקוד ללא הקצאות זיכרון ובהרצת AI מקומית.',
 
       // Technologies
       'tech.title': 'טכנולוגיות',
-      'tech.subtitle': 'שפות ליבה, כלים ותחומי טכנולוגיה',
+      'tech.subtitle': 'שפות, כלים ותחומים שאני עובד איתם',
       'tech.coreTitle': 'טכנולוגיות ליבה',
       'tech.alsoTitle': 'תחומים נוספים',
       'tech.pillAlgorithms': 'אלגוריתמים',
       'tech.pillSystems': 'הנדסת מערכות',
       'tech.pillSearch': 'חיפוש וקטורי',
-      'tech.pillSecurity': 'אבטחה וביקורת בינארית',
+      'tech.pillSecurity': 'אבטחה וביקורת',
       'tech.pillRE': 'הנדסה לאחור',
 
       // Profiles & Footer
       'profiles.title': 'קוד פתוח ופרופילים',
-      'profiles.subtitle': 'התחברות בפלטפורמות פיתוח וקהילות טכנולוגיות',
+      'profiles.subtitle': 'איפה למצוא את הקוד והפרופיל שלי',
       'profiles.ghTitle': 'פרופיל GitHub',
-      'profiles.ghDesc': 'מוזמנים לצפות במאגרי הקוד הפתוח, ארכיטקטורות מערכת ואלגוריתמים.',
-      'profiles.ghBtn': 'בקר ב-@AMLAACH ב-GitHub',
+      'profiles.ghDesc': 'צפה במאגרי הקוד הפתוח, האלגוריתמים והפרויקטים שלי.',
+      'profiles.ghBtn': 'צפה ב-@AMLAACH ב-GitHub',
       'profiles.mtTitle': 'המלאך | מתמחים טופ',
-      'profiles.mtDesc': 'פורום הטכנולוגיה של הציבור החרדי — פרופיל ופעילות בקהילה.',
+      'profiles.mtDesc': 'פורום טכנולוגיה ישראלי — פרופיל ופעילות בקהילה.',
       'profiles.mtBtn': 'צפה בפרופיל במתמחים טופ',
       'footer.rights': 'כל הזכויות שמורות.',
       'footer.top': '↑ למעלה'
+    },
+    fr: {
+      langLabel: 'English',
+      'a11y.skip': 'Passer au contenu principal',
+      'nav.about': 'À propos',
+      'nav.philosophy': 'Ma vision',
+      'nav.projects': 'Projets',
+      'nav.currently': 'En cours',
+      'nav.experiments': 'Expérimentations',
+      'nav.timeline': 'Parcours',
+      'nav.techstack': 'Tech',
+      'nav.profiles': 'Profils',
+
+      // Hero
+      'hero.title': 'Je développe du code là où la <span class="gradient-text">performance compte vraiment</span>.',
+      'hero.subtitle': 'Algorithmes, ingénierie système, infrastructure IA et code rapide.',
+      'hero.pills': 'Rust · Python · Algorithmes · IA · Systèmes',
+      'hero.btnWork': 'Voir mes projets',
+
+      // About
+      'about.title': 'À propos',
+      'about.subtitle': 'Développeur basé en Israël, passionné par le code bas niveau et la performance.',
+      'about.bioTitle': 'Développeur Systèmes & IA',
+      'about.bioText1': 'J\'aime concevoir des algorithmes, des systèmes rapides et des outils d\'IA. La plupart de mes projets sont open source et axés sur la compréhension réelle du matériel.',
+      'about.bioText2': 'Je passe une grande partie de mon temps à coder en Rust pour le système, en Python pour le traitement de données, les moteurs de recherche et l\'analyse binaire.',
+      'about.labelName': 'Nom :',
+      'about.labelRole': 'Rôle :',
+      'about.valueRole': 'Développeur Systèmes & IA',
+      'about.labelFocus': 'Focus :',
+      'about.valueFocus': 'Algorithmes, Systèmes & IA',
+      'about.labelGitHub': 'GitHub :',
+      'about.labelCommunity': 'Communauté :',
+      'about.mitmachimLink': 'Hamalach @ Mitmachim Top',
+
+      // Philosophy (How I Think)
+      'phil.title': 'Ma vision',
+      'phil.subtitle': 'Mon approche du code, de la performance et de l\'architecture',
+      'phil.quote1': 'Je m\'intéresse aux détails qu\'on oublie souvent : <span class="philosophy-highlight">accès mémoire, complexité algorithmique, concurrence, gestion du cache et coût de l\'abstraction</span>.',
+      'phil.quote2': 'Je préfère comprendre pourquoi un système est lent avant d\'ajouter une couche d\'optimisation en plus.',
+
+      // Things I Care About
+      'val.title1': 'Performance',
+      'val.desc1': 'Faire travailler le matériel efficacement avant d\'ajouter des serveurs.',
+      'val.title2': 'Algorithmes',
+      'val.desc2': 'Trouver une meilleure façon de résoudre le problème, pas juste accélérer une mauvaise solution.',
+      'val.title3': 'Systèmes',
+      'val.desc3': 'Mémoire, threads, disposition des données et tout ce que les processeurs exigent qu\'on comprenne.',
+      'val.title4': 'IA',
+      'val.desc4': 'Utiliser des modèles là où ils aident vraiment, tout en gardant le système clair et maîtrisable.',
+
+      // Projects
+      'p.title': 'Projets phares',
+      'p.subtitle': 'Mes réalisations et projets principaux',
+      'p.featured': 'Projet Phare',
+      'p.hddeTagline': 'Moteur de décision sans allocation mémoire pour systèmes à haute performance.',
+      'p.labelWhy': 'Pourquoi ce projet',
+      'p.hddeWhy': 'Pour supprimer complètement l\'allocation sur le tas (heap) pendant l\'évaluation de décisions.',
+      'p.labelInteresting': 'Ce qui le rend intéressant',
+      'p.hddeInteresting': 'Organise les arbres de décision dans des structures mémoire contiguës. Maximise l\'usage du cache CPU et évite toute allocation dynamique à l\'exécution.',
+
+      'p.otzariaTagline': 'Recherche hybride (texte + sens) pour les textes en hébreu.',
+      'p.otzariaWhy': 'Pour permettre de chercher par le sens dans des milliers de textes anciens sur Otzaria.',
+      'p.otzariaInteresting': 'Combine recherche textuelle BM25 et embeddings vectoriels (Qwen3 0.6B) adaptés à l\'hébreu. Tourne très vite en local sur un PC classique.',
+
+      'p.jmTagline': 'Lecteur audio ultra léger et rapide.',
+      'p.jmWhy': 'Créé sur mon temps libre pour écouter de la musique instantanément sans framework lourd.',
+      'p.jmInteresting': 'Utilise l\'API Web Audio native et un DOM minimal pour démarrer immédiatement et consommer très peu de RAM.',
+
+      // Currently Building
+      'curr.title': 'En cours de développement',
+      'curr.subtitle': 'Ce sur quoi je travaille et cherche en ce moment',
+      'curr.hdde': 'Moteur de décision en Rust axé sur le cache CPU et zéro allocation.',
+      'curr.otzaria': 'Moteur de recherche hybride texte + vecteur pour textes en hébreu.',
+      'curr.aiResTitle': 'IA locale & inférence CPU',
+      'curr.aiResDesc': 'Expérimentations sur l\'inférence CPU, la quantification, les modèles MoE et l\'économie de mémoire.',
+
+      // Selected Experiments & Research
+      'exp.title': 'Expérimentations & Recherche',
+      'exp.subtitle': 'Tests courts, benchmarks et explorations techniques',
+      'exp1.title': 'Vitesse d\'inférence CPU',
+      'exp1.desc': 'Tests d\'instructions SIMD et d\'accès cache pour tourner de petits LLM sur CPU grand public.',
+      'exp2.title': 'Accès mémoire MoE',
+      'exp2.desc': 'Analyse des goulots d\'étranglement lors de la permutation des experts en RAM.',
+      'exp3.title': 'Recherche vectorielle en Hébreu',
+      'exp3.desc': 'Test de tokeniseurs et d\'embeddings quantifiés sur corpus hébreu.',
+      'exp4.title': 'Structures zéro allocation',
+      'exp4.desc': 'Création d\'allocateurs arena et de buffers contigus pour un temps d\'exécution déterministe.',
+      'exp5.title': 'Tests de quantification',
+      'exp5.desc': 'Comparaison des pertes de précision entre INT4 et INT8 sur des embeddings.',
+      'exp6.title': 'Algorithmes adaptés au Cache',
+      'exp6.desc': 'Organisation d\'algorithmes de graphes pour optimiser le préchargement L1/L2.',
+
+      // Timeline
+      'time.title': 'Parcours',
+      'time.subtitle': 'Évolution de mon travail au fil du temps',
+      'time.y2024': 'Projets Logiciels & IA — Outils de base et bases du Machine Learning.',
+      'time.y2025': 'Recherche Otzaria — Développement du moteur de recherche hybride.',
+      'time.y2026': 'Systèmes & Rust — Focus sur le code zéro allocation et l\'IA locale.',
+
+      // Technologies
+      'tech.title': 'Technologies',
+      'tech.subtitle': 'Langages, outils et domaines principaux',
+      'tech.coreTitle': 'Stack Principale',
+      'tech.alsoTitle': 'Autres compétences',
+      'tech.pillAlgorithms': 'Algorithmes',
+      'tech.pillSystems': 'Ingénierie Système',
+      'tech.pillSearch': 'Recherche Vectorielle',
+      'tech.pillSecurity': 'Sécurité & Audit',
+      'tech.pillRE': 'Rétro-ingénierie',
+
+      // Profiles & Footer
+      'profiles.title': 'Open Source & Profils',
+      'profiles.subtitle': 'Où retrouver mon code et mes profils',
+      'profiles.ghTitle': 'Profil GitHub',
+      'profiles.ghDesc': 'Découvrez mes projets open source, algorithmes et code.',
+      'profiles.ghBtn': 'Voir @AMLAACH sur GitHub',
+      'profiles.mtTitle': 'Hamalach | Mitmachim Top',
+      'profiles.mtDesc': 'Forum tech de la communauté — profil et activité.',
+      'profiles.mtBtn': 'Voir le profil Mitmachim Top',
+      'footer.rights': 'Tous droits réservés.',
+      'footer.top': '↑ Haut'
     }
   };
+
+  // Supported languages list
+  const supportedLangs = ['en', 'he', 'fr'];
 
   // State Variables (Default: English & Dark Mode)
   let currentLang = localStorage.getItem('amlaach_lang') || 'en';
@@ -273,6 +399,7 @@
 
   // Language Manager
   function setLanguage(lang) {
+    if (!supportedLangs.includes(lang)) lang = 'en';
     currentLang = lang;
     localStorage.setItem('amlaach_lang', lang);
 
@@ -287,7 +414,7 @@
     elements.forEach(el => {
       const key = el.getAttribute('data-i18n');
       if (translations[lang] && translations[lang][key]) {
-        el.textContent = translations[lang][key];
+        el.innerHTML = translations[lang][key];
       }
     });
 
@@ -307,13 +434,16 @@
     document.documentElement.setAttribute('data-theme', theme);
   }
 
-  // Set English & Dark mode defaults
+  // Set initial language & Dark mode defaults
   setLanguage(currentLang);
   setTheme(currentTheme);
 
+  // Cycle languages on toggle button click (en -> he -> fr -> en)
   if (langToggleBtn) {
     langToggleBtn.addEventListener('click', () => {
-      setLanguage(currentLang === 'en' ? 'he' : 'en');
+      const currentIndex = supportedLangs.indexOf(currentLang);
+      const nextLang = supportedLangs[(currentIndex + 1) % supportedLangs.length];
+      setLanguage(nextLang);
     });
   }
 
