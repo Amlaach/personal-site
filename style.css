@@ -1020,7 +1020,300 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   11. Footer
+   11. Engineering Philosophy ("How I Think") & "Things I Care About"
+   -------------------------------------------------------------------------- */
+.philosophy-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-inline-start: 4px solid var(--accent-primary);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+
+.philosophy-text {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+  font-weight: 400;
+}
+
+.philosophy-text:last-child {
+  margin-bottom: 0;
+}
+
+.philosophy-highlight {
+  color: var(--accent-primary);
+  font-family: var(--font-code);
+  font-weight: 600;
+}
+
+/* Values Grid: "Things I Care About" */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.75rem;
+}
+
+.value-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  transition: all var(--transition-normal);
+}
+
+.value-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.value-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  margin-bottom: 0.75rem;
+  font-family: var(--font-code);
+}
+
+.value-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   12. Enhanced Project Cards with Metrics & Deep Context
+   -------------------------------------------------------------------------- */
+.metrics-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-block: 1rem 1.5rem;
+}
+
+.metric-pill {
+  font-family: var(--font-code);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-sm);
+  background-color: rgba(56, 189, 248, 0.1);
+  color: var(--accent-primary);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+.metric-pill.metric-highlight {
+  background-color: rgba(52, 211, 153, 0.12);
+  color: var(--success-color);
+  border-color: rgba(52, 211, 153, 0.3);
+}
+
+.project-block {
+  margin-bottom: 1.25rem;
+}
+
+.project-block-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
+
+.project-block-text {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+/* --------------------------------------------------------------------------
+   13. Currently Building & Selected Experiments
+   -------------------------------------------------------------------------- */
+.currently-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.75rem;
+}
+
+.currently-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  backdrop-filter: var(--glass-blur);
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.currently-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
+}
+
+.currently-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-family: var(--font-code);
+  color: var(--success-color);
+  margin-bottom: 0.85rem;
+}
+
+.currently-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.currently-desc {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+/* Experiments Grid */
+.experiments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.experiment-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  backdrop-filter: var(--glass-blur);
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.experiment-card:hover {
+  border-color: var(--border-hover);
+  background-color: var(--bg-tertiary);
+  transform: translateY(-3px);
+}
+
+.experiment-title {
+  font-family: var(--font-code);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.experiment-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   14. Minimal Timeline (2024 -> 2025 -> 2026)
+   -------------------------------------------------------------------------- */
+.timeline-track {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  position: relative;
+}
+
+.timeline-step {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  backdrop-filter: var(--glass-blur);
+  position: relative;
+  transition: border-color var(--transition-fast);
+}
+
+.timeline-step:hover {
+  border-color: var(--border-hover);
+}
+
+.timeline-year {
+  font-family: var(--font-code);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--accent-primary);
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.03em;
+}
+
+.timeline-text {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   15. Streamlined Tech Stack (Core vs Also Work With)
+   -------------------------------------------------------------------------- */
+.tech-groups-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.tech-group-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-primary);
+  margin-bottom: 1.25rem;
+  font-family: var(--font-code);
+}
+
+.tech-pills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.tech-big-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.35rem;
+  border-radius: var(--radius-md);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  font-family: var(--font-code);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  backdrop-filter: var(--glass-blur);
+  transition: all var(--transition-fast);
+}
+
+.tech-big-pill:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.tech-big-pill.core-pill {
+  border-color: rgba(56, 189, 248, 0.35);
+  background-color: rgba(56, 189, 248, 0.06);
+}
+
+/* --------------------------------------------------------------------------
+   16. Footer
    -------------------------------------------------------------------------- */
 .site-footer {
   border-top: 1px solid var(--border-color);
@@ -1058,3 +1351,4 @@ button {
 .back-to-top:hover {
   text-decoration: underline;
 }
+
