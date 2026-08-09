@@ -697,15 +697,21 @@
   // Floating Back-To-Top Button (Fixed Left Side)
   // --------------------------------------------------------------------------
   if (floatingTopBtn) {
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 300) {
+    const handleScrollTopBtn = () => {
+      const scrollPos = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+      if (scrollPos > 100) {
         floatingTopBtn.classList.add('visible');
       } else {
         floatingTopBtn.classList.remove('visible');
       }
-    }, { passive: true });
+    };
 
-    floatingTopBtn.addEventListener('click', () => {
+    window.addEventListener('scroll', handleScrollTopBtn, { passive: true });
+    // Check scroll position immediately on load
+    handleScrollTopBtn();
+
+    floatingTopBtn.addEventListener('click', (e) => {
+      e.preventDefault();
       window.scrollTo({
         top: 0,
         behavior: 'smooth'

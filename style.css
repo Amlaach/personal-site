@@ -1352,27 +1352,28 @@ button {
    17. Floating Back-To-Top Button (Fixed Left Side)
    -------------------------------------------------------------------------- */
 .floating-top-btn {
-  position: fixed;
-  bottom: 2rem;
-  left: 2rem;
-  width: 48px;
-  height: 48px;
+  position: fixed !important;
+  bottom: 2.5rem !important;
+  left: 2rem !important;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   background: var(--bg-card);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--border-hover);
+  border: 2px solid var(--accent-primary);
   color: var(--accent-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 15px var(--accent-glow);
   opacity: 0;
   visibility: hidden;
-  transform: translateY(16px) scale(0.9);
-  transition: opacity var(--transition-normal), transform var(--transition-normal), visibility var(--transition-normal), background-color var(--transition-fast), border-color var(--transition-fast);
-  z-index: 990;
+  transform: translateY(20px) scale(0.85);
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s, background-color 0.2s, border-color 0.2s;
+  z-index: 99999 !important;
   cursor: pointer;
+  pointer-events: auto;
 }
 
 .floating-top-btn.visible {
@@ -1382,11 +1383,11 @@ button {
 }
 
 .floating-top-btn:hover {
-  background-color: var(--bg-tertiary);
-  border-color: var(--accent-primary);
+  background-color: var(--accent-primary);
   color: #ffffff;
-  transform: translateY(-3px) scale(1.08);
-  box-shadow: var(--shadow-lg);
+  border-color: var(--accent-primary);
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 0 12px 30px rgba(56, 189, 248, 0.4);
 }
 
 /* --------------------------------------------------------------------------
