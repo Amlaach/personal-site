@@ -28,6 +28,7 @@
       'hero.subtitle': 'Algorithms, systems engineering, AI tools, and fast code.',
       'hero.pills': 'Rust · Python · Algorithms · AI · Systems',
       'hero.btnWork': 'Check out my work',
+      'hero.ctaGithub': 'GitHub',
 
       // About
       'about.title': 'About',
@@ -64,23 +65,34 @@
       'p.title': 'Featured Projects',
       'p.subtitle': 'Main projects and code I\'ve built',
       'p.featured': 'Flagship',
+      'p.p1Type': 'Core Systems',
+      'p.p2Type': 'Search Infrastructure',
+      'p.p3Type': 'Side Project / Audio',
+      'p.viewRepo': 'GitHub',
       'p.hddeTagline': 'Zero-allocation decision engine for high-performance systems.',
+      'p.hddeMetric1': '0 Allocations',
       'p.labelWhy': 'Why I built it',
       'p.hddeWhy': 'To cut out heap memory allocation completely during dynamic decision evaluation.',
       'p.labelInteresting': 'What makes it interesting',
       'p.hddeInteresting': 'Puts dynamic decision trees into flat memory buffers. Keeps data right next to CPU cache and avoids memory allocations while running.',
 
       'p.otzariaTagline': 'Fast search combining exact text and meaning for Hebrew books.',
+      'p.otzariaMetric1': '594K Lexical Links',
+      'p.otzariaMetric2': 'Hebrew Semantic Search',
       'p.otzariaWhy': 'To let people search thousands of classic Hebrew texts in Otzaria by meaning instead of just exact words.',
       'p.otzariaInteresting': 'Mixes BM25 text search with dense vector embeddings (Qwen3 0.6B) tuned for Hebrew. Runs fast and locally on standard laptops.',
 
       'p.jmTagline': 'Lightweight audio player built for speed.',
+      'p.jmMetric1': 'Fast Startup',
+      'p.jmMetric2': 'Clean UI',
       'p.jmWhy': 'Built in spare time to play music instantly without heavy frameworks or lag.',
       'p.jmInteresting': 'Uses raw Web Audio APIs and simple DOM updates so it opens in a snap and uses almost no RAM.',
 
       // Currently Building
       'curr.title': 'Currently Building',
       'curr.subtitle': 'What I\'m actively coding and researching right now',
+      'curr.tagActive': '● ACTIVE DEVELOPMENT',
+      'curr.tagResearch': '● RESEARCH',
       'curr.hdde': 'Zero-allocation decision engine in Rust focusing on CPU cache layout.',
       'curr.otzaria': 'Hybrid search engine combining text and vector search for Hebrew books.',
       'curr.aiResTitle': 'Local AI & CPU Inference',
@@ -116,7 +128,9 @@
       'tech.alsoTitle': 'Also Work With',
       'tech.pillAlgorithms': 'Algorithms',
       'tech.pillSystems': 'Systems Engineering',
+      'tech.pillAi': 'AI / ML',
       'tech.pillSearch': 'Vector Search',
+      'tech.pillWeb': 'JavaScript / Web',
       'tech.pillSecurity': 'Security & Audit',
       'tech.pillRE': 'Reverse Engineering',
 
@@ -146,9 +160,10 @@
 
       // Hero
       'hero.title': 'אני בונה תוכנה במקומות שבהם <span class="gradient-text">ביצועים באמת משנים</span>.',
-      'hero.subtitle': 'אלגוריתמים, הנדסת מערכות, תשתיות AI וקוד מהיר.',
+      'hero.subtitle': 'אלגוריתמים, הנדסת מערכות, כלי AI וקוד מהיר.',
       'hero.pills': 'Rust · Python · אלגוריתמים · AI · מערכות',
       'hero.btnWork': 'צפה בעבודות שלי',
+      'hero.ctaGithub': 'פרופיל GitHub',
 
       // About
       'about.title': 'אודות',
@@ -185,23 +200,34 @@
       'p.title': 'פרויקטים נבחרים',
       'p.subtitle': 'פרויקטים מרכזיים וקוד שבניתי',
       'p.featured': 'פרויקט דגל',
+      'p.p1Type': 'מערכות ליבה',
+      'p.p2Type': 'תשתיות חיפוש',
+      'p.p3Type': 'פרויקט צד / אודיו',
+      'p.viewRepo': 'צפה ב-GitHub',
       'p.hddeTagline': 'מנוע החלטות ללא הצאת זיכרון עבור מערכות בעלות ביצועים גבוהים.',
+      'p.hddeMetric1': '0 הקצאות זיכרון',
       'p.labelWhy': 'למה בניתי את זה',
       'p.hddeWhy': 'כדי לבטל לחלוטין הצאת זיכרון ב-heap בזמן הערכת החלטות דינמית.',
       'p.labelInteresting': 'מה הופך את זה למעניין',
       'p.hddeInteresting': 'מארגן עצי החלטה בתוך חוצצי זיכרון שטוחים. שומר על הנתונים קרוב ל-Cache של המעבד ונמנע מהקצאות זיכרון בזמן ריצה.',
 
       'p.otzariaTagline': 'חיפוש מהיר המשלב טקסט מדויק ומשמעות עבור ספרים בעברית.',
+      'p.otzariaMetric1': '594K קישורים לקסיקליים',
+      'p.otzariaMetric2': 'חיפוש סמנטי בעברית',
       'p.otzariaWhy': 'כדי לאפשר לאנשים לחפש באלפי טקסטים תורניים באוצריא לפי משמעות ולא רק לפי מילים מדויקות.',
       'p.otzariaInteresting': 'משלב חיפוש טקסטואלי BM25 עם הטמעות וקטוריות (Qwen3 0.6B) המותאמות לעברית. רץ מהיר ומקומי על מחשבים ניידים רגילים.',
 
       'p.jmTagline': 'נגן אודיו קל משקל שנבנה למהירות.',
+      'p.jmMetric1': 'טעינה מיידית',
+      'p.jmMetric2': 'ממשק נקי',
       'p.jmWhy': 'נוצר בזמן הפנאי לנגן מוזיקה מיידית ללא פרימוורקים כבדים או איטיות.',
       'p.jmInteresting': 'משתמש ב-Web Audio APIs טהור ועדכוני DOM פשוטים כדי להיפתח כהרף עין ולצרוך כמעט אפס RAM.',
 
       // Currently Building
       'curr.title': 'כעת בפיתוח',
       'curr.subtitle': 'מה שאני מפתח וחוקר באופן פעיל עכשיו',
+      'curr.tagActive': '● בפיתוח פעיל',
+      'curr.tagResearch': '● במחקר',
       'curr.hdde': 'מנוע החלטות ב-Rust הממוקד במבנה זיכרון ב-Cache ללא הקצאות.',
       'curr.otzaria': 'מנוע חיפוש היברידי המשלב חיפוש טקסט וחיפוש וקטורי לספרים בעברית.',
       'curr.aiResTitle': 'AI מקומי והרצת CPU',
@@ -209,7 +235,7 @@
 
       // Selected Experiments & Research
       'exp.title': 'ניסויים ומחקר צדדי',
-      'exp.subtitle': 'בדיקות קצרות, בנצ'מארקים וחקירות קוד',
+      'exp.subtitle': 'בדיקות קצרות, בנצ\'מארקים וחקירות קוד',
       'exp1.title': 'מהירות הרצת CPU',
       'exp1.desc': 'בדיקת הוראות SIMD ומבני Cache להרצת LLMs קטנים במהירות על מעבדים רגילים.',
       'exp2.title': 'גישת זיכרון ב-MoE',
@@ -237,7 +263,9 @@
       'tech.alsoTitle': 'תחומים נוספים',
       'tech.pillAlgorithms': 'אלגוריתמים',
       'tech.pillSystems': 'הנדסת מערכות',
+      'tech.pillAi': 'AI / למידת מכונה',
       'tech.pillSearch': 'חיפוש וקטורי',
+      'tech.pillWeb': 'JavaScript / ווב',
       'tech.pillSecurity': 'אבטחה וביקורת',
       'tech.pillRE': 'הנדסה לאחור',
 
@@ -270,6 +298,7 @@
       'hero.subtitle': 'Algorithmes, ingénierie système, infrastructure IA et code rapide.',
       'hero.pills': 'Rust · Python · Algorithmes · IA · Systèmes',
       'hero.btnWork': 'Voir mes projets',
+      'hero.ctaGithub': 'Profil GitHub',
 
       // About
       'about.title': 'À propos',
@@ -306,23 +335,34 @@
       'p.title': 'Projets phares',
       'p.subtitle': 'Mes réalisations et projets principaux',
       'p.featured': 'Projet Phare',
+      'p.p1Type': 'Systèmes Principaux',
+      'p.p2Type': 'Infrastructure de Recherche',
+      'p.p3Type': 'Projet Secondaire / Audio',
+      'p.viewRepo': 'Voir sur GitHub',
       'p.hddeTagline': 'Moteur de décision sans allocation mémoire pour systèmes à haute performance.',
+      'p.hddeMetric1': '0 Allocation',
       'p.labelWhy': 'Pourquoi ce projet',
       'p.hddeWhy': 'Pour supprimer complètement l\'allocation sur le tas (heap) pendant l\'évaluation de décisions.',
       'p.labelInteresting': 'Ce qui le rend intéressant',
       'p.hddeInteresting': 'Organise les arbres de décision dans des structures mémoire contiguës. Maximise l\'usage du cache CPU et évite toute allocation dynamique à l\'exécution.',
 
       'p.otzariaTagline': 'Recherche hybride (texte + sens) pour les textes en hébreu.',
+      'p.otzariaMetric1': '594K Liens Lexicaux',
+      'p.otzariaMetric2': 'Recherche Sémantique Hébreu',
       'p.otzariaWhy': 'Pour permettre de chercher par le sens dans des milliers de textes anciens sur Otzaria.',
       'p.otzariaInteresting': 'Combine recherche textuelle BM25 et embeddings vectoriels (Qwen3 0.6B) adaptés à l\'hébreu. Tourne très vite en local sur un PC classique.',
 
       'p.jmTagline': 'Lecteur audio ultra léger et rapide.',
+      'p.jmMetric1': 'Démarrage Rapide',
+      'p.jmMetric2': 'Interface Épurée',
       'p.jmWhy': 'Créé sur mon temps libre pour écouter de la musique instantanément sans framework lourd.',
       'p.jmInteresting': 'Utilise l\'API Web Audio native et un DOM minimal pour démarrer immédiatement et consommer très peu de RAM.',
 
       // Currently Building
       'curr.title': 'En cours de développement',
       'curr.subtitle': 'Ce sur quoi je travaille et cherche en ce moment',
+      'curr.tagActive': '● DÉVELOPPEMENT ACTIF',
+      'curr.tagResearch': '● RECHERCHE',
       'curr.hdde': 'Moteur de décision en Rust axé sur le cache CPU et zéro allocation.',
       'curr.otzaria': 'Moteur de recherche hybride texte + vecteur pour textes en hébreu.',
       'curr.aiResTitle': 'IA locale & inférence CPU',
@@ -358,7 +398,9 @@
       'tech.alsoTitle': 'Autres compétences',
       'tech.pillAlgorithms': 'Algorithmes',
       'tech.pillSystems': 'Ingénierie Système',
+      'tech.pillAi': 'IA / ML',
       'tech.pillSearch': 'Recherche Vectorielle',
+      'tech.pillWeb': 'JavaScript / Web',
       'tech.pillSecurity': 'Sécurité & Audit',
       'tech.pillRE': 'Rétro-ingénierie',
 
